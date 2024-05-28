@@ -14,7 +14,7 @@ html {
     flex-direction: column;
     justify-content: center;
     min-height: 10vh;
-    padding: 3rem;
+    /* padding: 3rem; */
 }
 
 .inner-container {

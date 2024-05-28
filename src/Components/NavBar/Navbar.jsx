@@ -4,12 +4,28 @@ import Profile from "../../assets/profile.png"
 import lessThen from "../../assets/less-than.png"
 import setting from "../../assets/setting.png"
 import Logout from "../../assets/logout.png"
+import Home from "../../assets/icons_home.png"
 import "./Navbar.css"
 import React, { useState, useRef, useEffect } from 'react';
 import SearchBar from './SearchBar/SearchBar';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginSuccess, logoutSuccess} from '../../Redux/authSlice';
-import { setName ,setId} from "../../Redux/profileSlice";
+import { loginSuccess, logoutSuccess } from '../../Redux/authSlice';
+import {
+    setId,
+    setName,
+    setBackImage,
+    setCv,
+    setDescription,
+    setFollowersCount,
+    setIsFollowed,
+    setIsFriend,
+    setJopTitle,
+    setPhoneNumber,
+    setProfilePicture,
+    setRate,
+    setRateCount,
+    setSkill
+} from "../../Redux/profileSlice";
 import axios from 'axios';
 
 export default function Navbar() {
@@ -25,14 +41,14 @@ export default function Navbar() {
     const getDataUser = async () => {
         try {
             const { data } = await axios.get(process.env.REACT_APP_USER, {
-            headers: {
-                'Authorization': 'Bearer ' + tok,
-                "Content-Type": "application/json"
-            }
-        });
-        setData(data);
+                headers: {
+                    'Authorization': 'Bearer ' + tok,
+                    "Content-Type": "application/json"
+                }
+            });
+            setData(data);
         } catch (error) {
-            if(error.message ==="Request failed with status code 401"){
+            if (error.message === "Request failed with status code 401") {
                 dispatch(loginSuccess(""))
             }
         }
@@ -40,16 +56,32 @@ export default function Navbar() {
     };
     useEffect(() => {
         getDataUser();
-    }, []);
-console.log(data);
-dispatch(setId(data.id))  
-dispatch(setName(data.name));
-const name=data.firstName+" "+data.lastName;
-const ImgProfile=data.profilePicture;
-const logout = () => {
-    dispatch(logoutSuccess())
-    navigate('/signin')
-};
+    }, [tok]);
+    console.log(data);
+    console.log(data);
+    const name = data.firstName + " " + data.lastName;
+    const ImgProfile = data.profilePicture;
+    dispatch(setId(data.id))
+    dispatch(setName(name));
+    dispatch(setBackImage(data.backImage));
+    dispatch(setCv(data.cv));
+    dispatch(setIsFriend(data.isFriend));
+    dispatch(setIsFollowed(data.isFollowed));
+    dispatch(setFollowersCount(data.followersCount));
+    dispatch(setDescription(data.description));
+    dispatch(setJopTitle(data.jopTitle));
+    dispatch(setPhoneNumber(data.phoneNumber));
+    dispatch(setProfilePicture(data.profilePicture));
+    dispatch(setRate(data.rate));
+    dispatch(setRateCount(data.rateCount));
+    dispatch(setSkill(data.skill));
+    const id = useSelector((state) => state.profile.skill);
+    console.log(id);
+
+    const logout = () => {
+        dispatch(logoutSuccess())
+        navigate('/signin')
+    };
     return (
         <>
             <nav className="navbar navbar-expand-lg " style={{ background: "#FBFCFC", padding: "0rem" }}>
@@ -66,20 +98,25 @@ const logout = () => {
                             <div className='User'>
                                 <div className='UserText p-1'>{name}</div>
                                 <div>
-                                    <img className='UserImage' src={ImgProfile!=null? ImgProfile:"https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"} alt="" onClick={toggleMenu} />
+                                    <img className='UserImage' src={ImgProfile != null ? ImgProfile : "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"} alt="" onClick={toggleMenu} />
                                     <div id="subMenu" ref={subMenuRef} className={isOpen ? 'sub-menu-wrap' : 'sub-menu-wrap-2'}>
                                         <div className="sub-menu">
                                             <div className='user-info'>
-                                                <img className='UserImage' src={ImgProfile!=null? ImgProfile:"https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"} alt="" />
+                                                <img className='UserImage' src={ImgProfile != null ? ImgProfile : "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"} alt="" />
                                                 <h3>{name}</h3>
                                             </div>
                                             <hr />
-                                            <Link to='/home/profile' className='sub-menu-link' onClick={navProfile}>
+                                            <Link to='/home/' className='sub-menu-link' >
+                                                <img src={Home} alt="Profile" />
+                                                <p>Home</p>
+                                                <span><img src={lessThen} alt="lessThen" /></span>
+                                            </Link>
+                                            <Link to='/home/profile' className='sub-menu-link' >
                                                 <img src={Profile} alt="Profile" />
                                                 <p>Profile</p>
                                                 <span><img src={lessThen} alt="lessThen" /></span>
                                             </Link>
-                                            <Link to='/home/setting'  className='sub-menu-link'>
+                                            <Link to='/home/setting' className='sub-menu-link'>
                                                 <img src={setting} alt="setting" />
                                                 <p>setting</p>
                                                 <span><img src={lessThen} alt="lessThen" /></span>

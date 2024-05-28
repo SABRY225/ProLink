@@ -6,7 +6,7 @@ const store = configureStore({
     reducer: {
         auth: authReducer,
         search: searchReducer,
-        Profile:profileReducer
+        profile:profileReducer
     },
 });
 
