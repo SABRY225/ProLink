@@ -7,7 +7,7 @@
 }
 .navbar{
     border-bottom: 1px solid #635e5eab;
-    box-shadow: 2px 2px 18px #525252;
+    box-shadow: 1px 1px 10px #525252;
 }
 .Logo{
     font-family: Cairo;
@@ -38,14 +38,17 @@
     padding-top: 2px;
     line-height: 37px;
 }
+.user-info{
+    display: flex;
+}
 .UserImage{
-    width: 57px;
+    width: 62px;
     border-radius: 50%;
     cursor: pointer
 }
 .sub-menu-wrap{
     position: absolute;
-    top: 100%;
+    top: 90%;
     right: 5%;
     width: 320px;
     min-height: 0;

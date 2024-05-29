@@ -16,28 +16,28 @@ function SlidBar() {
                 </Link>
             </div>
             <div className="col-md-12">
-                <Link to='/home/' className='sub-menu-link-2' >
+                <Link to='/home/explor' className='sub-menu-link-2' >
                     <img src={Explor} alt="Explor" />
                     <p>Explor</p>
                     <span></span>
                 </Link>
             </div>
             <div className="col-md-12">
-                <Link to='/home/' className='sub-menu-link-2' >
+                <Link to='/home/friend' className='sub-menu-link-2' >
                     <img src={Friend} alt="Friend" />
                     <p>Friends</p>
                     <span></span>
                 </Link>
             </div>
             <div className="col-md-12">
-                <Link to='/home/' className='sub-menu-link-2' >
+                <Link to='/home/notification' className='sub-menu-link-2' >
                     <img src={notification} alt="notification" />
                     <p>Notification</p>
                     <span></span>
                 </Link>
             </div>
             <div className="col-md-12">
-                <Link to='/home/' className='sub-menu-link-2' >
+                <Link to='/home/message' className='sub-menu-link-2' >
                     <img src={message} alt="message" />
                     <p>Messages</p>
                     <span></span>

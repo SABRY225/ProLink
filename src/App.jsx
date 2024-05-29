@@ -9,7 +9,7 @@ import {  SignIn,SignUp } from './Components/Auth/index';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
 import ProtectedRoutes from './Components/ProtectedRoutes/ProtectedRoutes';
 import Home from './Components/Home/Home.jsx';
-import {Profile,Setting} from './Components/ImportFile/index.jsx';
+import {BackImage, Explor, ExplorPages, InfoUser, Profile,Setting, UserImage} from './Components/ImportFile/index.jsx';
 import HomePages from './Pages/HomePages.jsx';
 
 
@@ -31,11 +31,30 @@ const routers = createBrowserRouter([
       </ProtectedRoutes>
     ),
     children: [
-      { path: "home", element: <HomePages /> ,children:[
-        {index:true,element:<Home />},
+      { path: "/", element: <HomePages /> ,children:[
+        {path:"home",element:<Home />,children:[
+          { path: "explor", element: <ExplorPages /> ,children:[
+            {index:true,element:<Explor />},
+          ],},
+          { path: "friend", element: <ExplorPages /> ,children:[
+            {index:true,element:<Explor />},
+          ],},
+          { path: "message", element: <ExplorPages /> ,children:[
+            {index:true,element:<Explor />},
+          ],},
+          { path: "notification", element: <ExplorPages /> ,children:[
+            {index:true,element:<Explor />},
+          ],}
+        ]},
         {path:"profile",element:<Profile />},
-        {path:"setting",element:<Setting />}
+        {path:"setting",element:<Setting />,children:[
+          {path:"UserImage",element:<UserImage />},
+          {index:true,element:<InfoUser />},
+          {path:"BackImage",element:<BackImage />},
+        ]},
+        
       ],},
+
       { path: "*", element: <ErrorPage /> },
     ],
   },

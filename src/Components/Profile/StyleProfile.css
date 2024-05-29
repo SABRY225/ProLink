@@ -1,15 +1,17 @@
-.backImage{
+.backImage {
     height: 50vh;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
 }
-.profilePicture{
+
+.profilePicture {
     height: 15rem;
     width: 15rem;
     border-radius: 50%;
     margin-top: -7rem;
     border: .5 solid #858282ab;
 }
+
 .box {
     /* Add your styles here */
     background-color: #FDFEFE;
@@ -21,10 +23,94 @@
     line-height: 1.5;
     border: 0.5px solid #33333381;
 }
-.box img{
+
+.box img {
     width: 50px;
     background: #e5e5e5;
     padding: 8px;
     margin-right: 15px;
     border-radius: 50%;
+}
+
+/* Container for the profile page */
+.profile-container {
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+/* Row containing the main content and sidebar */
+.profile-content {
+    margin-top: 20px;
+}
+
+/* Sidebar styling */
+.profile-sidebar {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Main content styling */
+.profile-main {
+    background-color: #ffffff;
+    padding: 20px;
+    /* margin-left: 1rem; */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Button container styling */
+.profile-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+/* Individual button styling */
+.btn {
+    padding: 10px 30px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-post {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-post:hover {
+    background-color: #45a049;
+}
+
+.btn-jobs {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-jobs:hover {
+    background-color: #0056b3;
+}
+
+/* Active button styling */
+.btn-active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-active:hover {
+    background-color: #45a049;
+}
+
+/* Inactive button styling */
+.btn-inactive {
+    background-color: #cccccc;
+    color: #666666;
+}
+
+.btn-inactive:hover {
+    background-color: #b3b3b3;
 }

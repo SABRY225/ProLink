@@ -111,12 +111,12 @@ export default function Navbar() {
                                                 <p>Home</p>
                                                 <span><img src={lessThen} alt="lessThen" /></span>
                                             </Link>
-                                            <Link to='/home/profile' className='sub-menu-link' >
+                                            <Link to='/profile' className='sub-menu-link' >
                                                 <img src={Profile} alt="Profile" />
                                                 <p>Profile</p>
                                                 <span><img src={lessThen} alt="lessThen" /></span>
                                             </Link>
-                                            <Link to='/home/setting' className='sub-menu-link'>
+                                            <Link to='/setting' className='sub-menu-link'>
                                                 <img src={setting} alt="setting" />
                                                 <p>setting</p>
                                                 <span><img src={lessThen} alt="lessThen" /></span>
