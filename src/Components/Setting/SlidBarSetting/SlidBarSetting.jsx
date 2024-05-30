@@ -9,21 +9,21 @@ function SlidBarSetting() {
     return (
         <div className='SlidBar '>
             <div className="col-md-12">
-                <Link to='/home/setting/' className='sub-menu-link-2' >
+                <Link to='/setting/' className='sub-menu-link-2' >
                     <img src={icons_user} alt="icons_user" />
                     <p>User Info</p>
                     <span></span>
                 </Link>
             </div>
             <div className="col-md-12">
-                <Link to='/home/setting/UserImage/' className='sub-menu-link-2' >
+                <Link to='/setting/UserImage/' className='sub-menu-link-2' >
                     <img src={user_image} alt="user_image" />
                     <p>Edite User Image</p>
                     <span></span>
                 </Link>
             </div>
             <div className="col-md-12">
-                <Link to='/home/setting/BackImage/' className='sub-menu-link-2' >
+                <Link to='/setting/BackImage/' className='sub-menu-link-2' >
                     <img src={back_image} alt="back_image" />
                     <p>Edite background Image</p>
                     <span></span>

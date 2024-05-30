@@ -9,7 +9,7 @@ import {  SignIn,SignUp } from './Components/Auth/index';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
 import ProtectedRoutes from './Components/ProtectedRoutes/ProtectedRoutes';
 import Home from './Components/Home/Home.jsx';
-import {BackImage, Explor, ExplorPages, InfoUser, Profile,Setting, UserImage} from './Components/ImportFile/index.jsx';
+import {BackImage, Explor, ExplorPages, InfoUser, Profile,Setting, UserImage,Friends, Messages, Notification, Default} from './Components/ImportFile/index.jsx';
 import HomePages from './Pages/HomePages.jsx';
 
 
@@ -33,18 +33,11 @@ const routers = createBrowserRouter([
     children: [
       { path: "/", element: <HomePages /> ,children:[
         {path:"home",element:<Home />,children:[
-          { path: "explor", element: <ExplorPages /> ,children:[
-            {index:true,element:<Explor />},
-          ],},
-          { path: "friend", element: <ExplorPages /> ,children:[
-            {index:true,element:<Explor />},
-          ],},
-          { path: "message", element: <ExplorPages /> ,children:[
-            {index:true,element:<Explor />},
-          ],},
-          { path: "notification", element: <ExplorPages /> ,children:[
-            {index:true,element:<Explor />},
-          ],}
+          {index:true,element:<Default />},
+          { path: "explor", element: <ExplorPages />},
+          { path: "friend", element: <Friends />},
+          { path: "message", element: <Messages />},
+          { path: "notification", element: <Notification /> }
         ]},
         {path:"profile",element:<Profile />},
         {path:"setting",element:<Setting />,children:[

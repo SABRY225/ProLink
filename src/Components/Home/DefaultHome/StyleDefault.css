@@ -1,0 +1,90 @@
+.post-form {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    max-width: 600px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.post-form__textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.Uplode_Image{
+    display: none;
+    margin-top: 1rem;
+    background-color: #D7DBDD;
+    margin-bottom: 10px;
+}
+.UploadButton {
+    margin-right: 15rem;
+    display: inline-block;
+    background-color: #2E4053 ;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 24px;
+    
+}
+.UploadButton:hover {
+    background-color: #45a049;
+}
+
+.post-form__button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.post-form__button:hover {
+    background-color: #0056b3;
+}
+
+.post-list {
+    /* width: 80%; */
+    max-width: 600px;
+    /* margin: auto; */
+}
+
+.post {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.post__image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+.post-form-info{
+    display: flex;
+    padding: 1rem;
+
+}
+.displayImgPost{
+    text-align: center;
+    padding: 1rem;
+    border-radius: 6%;
+}
+.post-form-info .InfoUserPost{
+    margin-top: 0.8rem;
+}

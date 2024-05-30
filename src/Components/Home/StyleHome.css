@@ -46,3 +46,19 @@
     width: 100%;
     transform: translateX(5px);
 }
+.InfoUserHome{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 24px;
+    background-color: #fff;
+    max-width: 600px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.InfoUserHome h6{
+    color: #CCD1D1;
+}
+.InfoUserHome .Followers{
+    color: #5DADE2;
+}

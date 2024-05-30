@@ -23,4 +23,12 @@ export {default as TVComponent} from "../Data/NoDate/NoData"
 
 //
 export {default as ExplorPages} from "../../Pages/ExplorPages"
-export {default as Explor} from "../Explor/Explor"
+export {default as Explor} from "../Home/Explor/Explor"
+export {default as Messages} from "../Home/Messages/Message"
+export {default as Friends} from "../Home/Friend/Friends"
+export {default as Notification} from "../Home/Notifications/Notification"
+
+export {default as Default} from "../Home/DefaultHome/Default"
+export {default as InfoUserHome} from "../Home/DefaultHome/InfoUser/InfoUserHome"
+export {default as AllPosts} from "../Home/DefaultHome/Post/AllPosts"
+export {default as CraetePost} from "../Home/DefaultHome/Post/CraetePost"
