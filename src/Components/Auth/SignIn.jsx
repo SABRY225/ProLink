@@ -73,9 +73,9 @@ export default function SignIn() {
               </div>
 
               <div className="checkbox-container">
-                <a href="#">
+                <Link to="/forgot-password">
                   Forgot your password?
-                </a>
+                </Link>
               </div>
 
               <div className="button-container">

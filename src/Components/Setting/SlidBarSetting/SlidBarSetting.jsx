@@ -1,9 +1,8 @@
 import React from 'react'
-import Home from "../../../assets/home.png"
-import Explor from "../../../assets/search.png"
 import back_image from "../../../assets/back_image.png"
 import icons_user from "../../../assets/icons_user.png"
 import user_image from "../../../assets/user_image.png"
+import Change_password from "../../../assets/change-password.png"
 import { Link } from 'react-router-dom'
 function SlidBarSetting() {
     return (
@@ -26,6 +25,13 @@ function SlidBarSetting() {
                 <Link to='/setting/BackImage/' className='sub-menu-link-2' >
                     <img src={back_image} alt="back_image" />
                     <p>Edite background Image</p>
+                    <span></span>
+                </Link>
+            </div>
+            <div className="col-md-12">
+                <Link to='/setting/NewPasswordRouter/' className='sub-menu-link-2' >
+                <img src={Change_password} alt="Change_password" />
+                    <p>Change Password Account</p>
                     <span></span>
                 </Link>
             </div>

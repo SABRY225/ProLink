@@ -14,6 +14,8 @@ const initialState = {
     profilePicture: '',
     rate: '',
     rateCount: '',
+    email:'',
+    changePassword:false,
     skill: [],
 };
 
@@ -36,11 +38,17 @@ const profileSlice = createSlice({
         setDescription: (state, { payload }) => {
             state.description = payload;
         },
+        setChangePassword: (state,{ payload }) => {
+            state.changePassword = payload;
+        },
         setFollowersCount: (state, { payload }) => {
             state.followersCount = payload;
         },
         setIsFollowed: (state, { payload }) => {
             state.isFollowed = payload;
+        },
+        setEmail: (state, { payload }) => {
+            state.email = payload;
         },
         setIsFriend: (state, { payload }) => {
             state.isFriend = payload;
@@ -80,7 +88,9 @@ export const {
     setProfilePicture, 
     setRate, 
     setRateCount, 
-    setSkill 
+    setSkill,
+    setEmail,
+    setChangePassword
 } = profileSlice.actions;
 
 export default profileSlice.reducer;

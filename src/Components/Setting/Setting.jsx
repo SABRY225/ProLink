@@ -1,5 +1,5 @@
 import React from 'react'
-import { SlidBarSetting, SlidProfile } from '../ImportFile'
+import { SlidBarSetting } from '../ImportFile'
 import { Outlet } from 'react-router-dom'
 import "./StyleSetting.css"
 export default function Setting() {

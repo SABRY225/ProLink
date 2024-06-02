@@ -32,3 +32,12 @@ export {default as Default} from "../Home/DefaultHome/Default"
 export {default as InfoUserHome} from "../Home/DefaultHome/InfoUser/InfoUserHome"
 export {default as AllPosts} from "../Home/DefaultHome/Post/AllPosts"
 export {default as CraetePost} from "../Home/DefaultHome/Post/CraetePost"
+
+export {default as Otp} from "../Auth/Otp"
+export {default as ForgotPassword} from "../Auth/ForgotPassword"
+export {default as ResetPassword} from "../Auth/ResetPassword"
+
+export {default as ChangePassword} from "../Setting/ChangePassword/ChangePassword"
+export {default as NewPasswordRouter} from "../Setting/ChangePassword/NewPassRouter"
+export {default as EnterOTP} from "../Setting/ChangePassword/EnterOTP"
+

@@ -9,8 +9,9 @@ import {  SignIn,SignUp } from './Components/Auth/index';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
 import ProtectedRoutes from './Components/ProtectedRoutes/ProtectedRoutes';
 import Home from './Components/Home/Home.jsx';
-import {BackImage, Explor, ExplorPages, InfoUser, Profile,Setting, UserImage,Friends, Messages, Notification, Default} from './Components/ImportFile/index.jsx';
+import {BackImage, ChangePassword, ExplorPages, InfoUser, Profile,Setting, UserImage,Friends, Messages, Notification, Default,Otp,ForgotPassword,ResetPassword, NewPasswordRouter, EnterOTP} from './Components/ImportFile/index.jsx';
 import HomePages from './Pages/HomePages.jsx';
+
 
 
 const routers = createBrowserRouter([
@@ -44,6 +45,8 @@ const routers = createBrowserRouter([
           {path:"UserImage",element:<UserImage />},
           {index:true,element:<InfoUser />},
           {path:"BackImage",element:<BackImage />},
+          {path:"NewPasswordRouter",element:<NewPasswordRouter />},
+          
         ]},
         
       ],},
@@ -57,6 +60,9 @@ const routers = createBrowserRouter([
     children: [
       { path: "signin", element: <SignIn /> },
       { path: "signup", element: <SignUp /> },
+      { path: "verify-otp", element: <Otp /> },
+      { path: "forgot-password", element: <ForgotPassword />},
+      { path:  "new-password",element:<ResetPassword />},
       { path: "*", element: <ErrorPage /> },
     ],
   },

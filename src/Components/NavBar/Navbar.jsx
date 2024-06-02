@@ -24,7 +24,8 @@ import {
     setProfilePicture,
     setRate,
     setRateCount,
-    setSkill
+    setSkill,
+    setEmail,
 } from "../../Redux/profileSlice";
 import axios from 'axios';
 
@@ -35,9 +36,29 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const subMenuRef = useRef(null);
     const [data, setData] = useState([]);
+    
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
+    
+    const handleClickOutside = (event) => {
+        if (subMenuRef.current && !subMenuRef.current.contains(event.target)) {
+            setIsOpen(false);
+        }
+    };
+    
+    useEffect(() => {
+        if (isOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isOpen]);
+
     const getDataUser = async () => {
         try {
             const { data } = await axios.get(process.env.REACT_APP_USER, {
@@ -47,20 +68,21 @@ export default function Navbar() {
                 }
             });
             setData(data);
+            console.log(data);
         } catch (error) {
             if (error.message === "Request failed with status code 401") {
                 dispatch(loginSuccess(""))
             }
         }
-
     };
+     
     useEffect(() => {
         getDataUser();
     }, [tok]);
-    console.log(data);
-    console.log(data);
+
     const name = data.firstName + " " + data.lastName;
     const ImgProfile = data.profilePicture;
+    
     dispatch(setId(data.id))
     dispatch(setName(name));
     dispatch(setBackImage(data.backImage));
@@ -75,13 +97,15 @@ export default function Navbar() {
     dispatch(setRate(data.rate));
     dispatch(setRateCount(data.rateCount));
     dispatch(setSkill(data.skill));
+    dispatch(setEmail(data.email));
+    
     const id = useSelector((state) => state.profile.skill);
-    console.log(id);
 
     const logout = () => {
         dispatch(logoutSuccess())
         navigate('/signin')
     };
+    
     return (
         <>
             <nav className="navbar navbar-expand-lg " style={{ background: "#FBFCFC", padding: "0rem" }}>
@@ -98,12 +122,12 @@ export default function Navbar() {
                             <div className='User'>
                                 <div className='UserText p-1'>{name}</div>
                                 <div>
-                                    <img className='UserImage' src={ImgProfile != null ? ImgProfile : "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"} alt="" onClick={toggleMenu} />
+                                    <img className='UserImage' src={data.profilePicture != null ? data.profilePicture : "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"} alt="" onClick={toggleMenu} />
                                     <div id="subMenu" ref={subMenuRef} className={isOpen ? 'sub-menu-wrap' : 'sub-menu-wrap-2'}>
                                         <div className="sub-menu">
                                             <div className='user-info'>
-                                                <img className='UserImage' src={ImgProfile != null ? ImgProfile : "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"} alt="" />
-                                                <h3>{name}</h3>
+                                                <img className='UserImage' src={data.profilePicture != null ? data.profilePicture : "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"} alt="" />
+                                                <h3 style={{marginLeft:'1rem'}}>{name}</h3>
                                             </div>
                                             <hr />
                                             <Link to='/home/' className='sub-menu-link' >

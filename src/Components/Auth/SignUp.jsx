@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import './StyleAuth.css';
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setEmail } from "../../Redux/authSlice";
 
 export default function SignUp() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     console.log(process.env.REACT_APP_REGISTER);
     const handleOnSubmit = async (evt) => {
         evt.preventDefault();
@@ -18,8 +22,8 @@ export default function SignUp() {
             return;
         }    
         try {
-          const jsonData = JSON.stringify(formData);
-          console.log(jsonData);
+        const jsonData = JSON.stringify(formData);
+            console.log(jsonData);
             const response = await axios.post(
                 process.env.REACT_APP_REGISTER,
                 jsonData, // Pass JSON data here
@@ -30,10 +34,13 @@ export default function SignUp() {
                 }
             );
             alert(response.data);
-            console.log(response);
-            navigate("/");
+            console.log(setEmail(formData.email));
+            dispatch(setEmail(formData.email))
+            navigate("/verify-otp");
         } catch (error) {
             console.log("Registration error:", error);
+            navigate("/verify-otp");
+
         }
     };
 
