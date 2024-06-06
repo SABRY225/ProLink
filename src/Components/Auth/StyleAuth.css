@@ -8,7 +8,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(-87deg, #F2F5F6 0%, #DDE5E8 100%);
+    /* background-image: linear-gradient(-87deg, #F2F5F6 0%, #DDE5E8 100%); */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,10 +39,12 @@
     margin: 0;
     display: flex;
     justify-content: space-around;
+    
   }
   
   .ul_tabs li {
-    width: 50%;
+    width: 30%;
+    
   }
   
   .ul_tabs li a {
@@ -55,13 +57,13 @@
   }
   
   .ul_tabs li.active a {
-    color: #50b3e1;
+    color: #3b3f40;
   }
   
   .linea_bajo_nom {
     display: block;
     height: 2px;
-    background: #50b3e1;
+    background: #3b3f40;
     width: 0;
     transition: width 0.3s;
   }
@@ -113,7 +115,7 @@
   }
   
   .btn_sign {
-    background-color: #50b3e1;
+    background-color: #3b3f40;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -124,100 +126,35 @@
   }
   
   .btn_sign:hover {
-    background-color: #4a9ccf;
+    background-color: #3b3f40;
   }
   
 
 
-  * {
-    margin: 0 auto;
-    padding: 0;
-    font-family: 'Open Sans', sans-serif;
-}
-
-.forgot-password-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(-87deg, #F2F5F6 0%, #DDE5E8 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Add your custom styles here */
+.bg-light {
+    background-color: #f8f9fa !important;
 }
 
 .card {
-    background-image: linear-gradient(-226deg, #FFFFFF 8%, #EEF3F5 100%);
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.21);
-    transition: all 0.5s;
-    overflow: hidden;
+    border-radius: 0.5rem;
 }
 
-.card-header {
-    background-color: #50b3e1;
+.img-fluid {
+    max-width: 100%;
+    height: auto;
 }
 
-.card-header, .card-text, .form-label {
-    color: #333;
+.object-fit-cover {
+    object-fit: cover;
 }
 
-.btn-primary {
-    background-color: #50b3e1;
-    border: none;
-    transition: background-color 0.3s;
+.btn-dark {
+    background-color: #343a40;
+    border-color: #343a40;
 }
 
-.btn-primary:hover {
-    background-color: #4a9ccf;
-}
-
-.text-success, .text-danger {
-    margin-top: 10px;
-}
-* {
-    margin: 0 auto;
-    padding: 0;
-    font-family: 'Open Sans', sans-serif;
-}
-
-.reset-password-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(-87deg, #F2F5F6 0%, #DDE5E8 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.card {
-    background-image: linear-gradient(-226deg, #FFFFFF 8%, #EEF3F5 100%);
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.21);
-    transition: all 0.5s;
-    overflow: hidden;
-}
-
-.card-header {
-    background-color: #50b3e1;
-}
-
-.card-header, .card-text, .form-label {
-    color: #333;
-}
-
-.btn-primary {
-    background-color: #50b3e1;
-    border: none;
-    transition: background-color 0.3s;
-}
-
-.btn-primary:hover {
-    background-color: #4a9ccf;
-}
-
-.text-success, .text-danger {
-    margin-top: 10px;
+.btn-dark:hover {
+    background-color: #23272b;
+    border-color: #1d2124;
 }
