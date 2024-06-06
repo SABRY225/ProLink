@@ -26,12 +26,10 @@ const Form = () => {
       const contCentrar = document.querySelector(".cont_centrar");
       if (contCentrar) {
         contCentrar.classList.add("cent_active");
-        handleTabChange("sign_in");
+        handleTabChange("sign_in"); // Ensure that "sign_in" is always selected on initial load
       }
     }
   }, [activeTab]);
-  
-  
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
@@ -85,10 +83,9 @@ const Form = () => {
     }
     console.log(inputs);
     try {
-      const response = await axios.post( 
+      const response = await axios.post(
         process.env.REACT_APP_REGISTER,
         JSON.stringify(inputs),
-        
         { headers: { "Content-Type": "application/json" } }
       );
       dispatch(setEmail(inputs.email));
@@ -98,11 +95,10 @@ const Form = () => {
       toast.error("Registration error");
     }
   };
-  
 
   return (
     <>
-      <section className="bg-light p-3 p-md-4 p-xl-5">
+      <section className="bg-light p-3 p-md-4 pt-xl-5">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-xxl-11">
@@ -118,84 +114,58 @@ const Form = () => {
                   </div>
                   <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
                     <div className="col-12 col-lg-11 col-xl-10">
-                      <div className="card-body px-3 px-md-4 px-xl-5">
+                      <div className="card-body p-3 p-md-4 px-xl-5">
+                        <div className="row">
+                          <div className="col-12">
+                            <div className="mb-0">
+                              <div className="text-center mb-0">
+                                {/* <a href="#!">
+                                  <img src={img} alt="BootstrapBrain Logo" width={175} height={57} />
+                                </a> */}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                         <div className="cont_tabs_login">
                           <ul className="ul_tabs">
-                            <li className={activeTab === "sign_in" ? "active" : ""}>
-                              <a href="#signin" onClick={() => handleTabChange("sign_in")}>
+                            <li
+                              className={
+                                activeTab === "sign_in" ? "active" : ""
+                              }
+                            >
+                              <a
+                                href="#signin"
+                                onClick={() => handleTabChange("sign_in")}
+                              >
                                 SIGN IN
                               </a>
                               <span className="linea_bajo_nom"></span>
                             </li>
-                            <li className={activeTab === "sign_up" ? "active" : ""}>
-                              <a href="#signup" onClick={() => handleTabChange("sign_up")}>
+                            <li
+                              className={
+                                activeTab === "sign_up" ? "active" : ""
+                              }
+                            >
+                              <a
+                                href="#signup"
+                                onClick={() => handleTabChange("sign_up")}
+                              >
                                 SIGN UP
                               </a>
                               <span className="linea_bajo_nom"></span>
                             </li>
                           </ul>
                         </div>
-                        <form onSubmit={activeTab === "sign_in" ? handleSignInSubmit : handleSignUpSubmit}>
+                        <form
+                          onSubmit={
+                            activeTab === "sign_in"
+                              ? handleSignInSubmit
+                              : handleSignUpSubmit
+                          }
+                        >
                           <div className="row gy-3 overflow-hidden">
-                            <div className="col-12">
-                              <div className="form-floating mb-0">
-                                <input
-                                  type="email"
-                                  className="form-control"
-                                  id="email"
-                                  name="email"
-                                  value={inputs.email}
-                                  onChange={handleChange}
-                                  placeholder="Enter Email"
-                                  required
-                                />
-                                <label htmlFor="email" className="form-label">
-                                  Email
-                                </label>
-                              </div>
-                            </div>
-                            <div className="col-12">
-                              <div className="form-floating mb-0">
-                                <input
-                                  type="password"
-                                  className="form-control"
-                                  id="password"
-                                  name="password"
-                                  value={inputs.password}
-                                  onChange={handleChange}
-                                  placeholder="Password"
-                                  required
-                                />
-                                <label
-                                  htmlFor="password"
-                                  className="form-label"
-                                >
-                                  Password
-                                </label>
-                              </div>
-                            </div>
                             {activeTab === "sign_up" && (
                               <>
-                                <div className="col-12">
-                                  <div className="form-floating mb-0">
-                                    <input
-                                      type="password"
-                                      className="form-control"
-                                      id="confirmPassword"
-                                      name="confirmPassword"
-                                      value={inputs.confirmPassword}
-                                      onChange={handleChange}
-                                      placeholder="Confirm Password"
-                                      required
-                                    />
-                                    <label
-                                      htmlFor="confirmPassword"
-                                      className="form-label"
-                                    >
-                                      Confirm Password
-                                    </label>
-                                  </div>
-                                </div>
                                 <div className="col-12">
                                   <div className="form-floating mb-0">
                                     <input
@@ -234,8 +204,6 @@ const Form = () => {
                                     >
                                       Last Name
                                     </label>
-
-                                    
                                   </div>
                                 </div>
                                 <div className="col-12">
@@ -258,6 +226,110 @@ const Form = () => {
                                     </label>
                                   </div>
                                 </div>
+                                <div className="col-12">
+                                  <div className="form-floating mb-0">
+                                    <input
+                                      type="email"
+                                      className="form-control"
+                                      id="email"
+                                      name="email"
+                                      value={inputs.email}
+                                      onChange={handleChange}
+                                      placeholder="Enter Email"
+                                      required
+                                    />
+                                    <label
+                                      htmlFor="email"
+                                      className="form-label"
+                                    >
+                                      Email
+                                    </label>
+                                  </div>
+                                </div>
+                                <div className="col-12">
+                                  <div className ="form-floating mb-0">
+                                    <input
+                                      type="password"
+                                      className="form-control"
+                                      id="password"
+                                      name="password"
+                                      value={inputs.password}
+                                      onChange={handleChange}
+                                      placeholder="Password"
+                                      required
+                                    />
+                                    <label
+                                      htmlFor="password"
+                                      className="form-label"
+                                    >
+                                      Password
+                                    </label>
+                                  </div>
+                                </div>
+                                <div className="col-12">
+                                  <div className="form-floating mb-0">
+                                    <input
+                                      type="password"
+                                      className="form-control"
+                                      id="confirmPassword"
+                                      name="confirmPassword"
+                                      value={inputs.confirmPassword}
+                                      onChange={handleChange}
+                                      placeholder="Confirm Password"
+                                      required
+                                    />
+                                    <label
+                                      htmlFor="confirmPassword"
+                                      className="form-label"
+                                    >
+                                      Confirm Password
+                                    </label>
+                                  </div>
+                                </div>
+                              </>
+                            )}
+                            {activeTab === "sign_in" && (
+                              <>
+                                <div className="col-12">
+                                  <div className="form-floating mb-0">
+                                    <input
+                                      type="email"
+                                      className="form-control"
+                                      id="email"
+                                      name="email"
+                                      value={inputs.email}
+                                      onChange={handleChange}
+                                      placeholder="Enter Email"
+                                      required
+                                    />
+                                    <label
+                                      htmlFor="email"
+                                      className="form-label"
+                                    >
+                                      Email
+                                    </label>
+                                  </div>
+                                </div>
+                                <div className="col-12">
+                                  <div className="form-floating mb-0">
+                                    <input
+                                      type="password"
+                                      className="form-control"
+                                      id="password"
+                                      name="password"
+                                      value={inputs.password}
+                                      onChange={handleChange}
+                                      placeholder="Password"
+                                      required
+                                    />
+                                    <label
+                                      htmlFor="password"
+                                      className="form-label"
+                                    >
+                                      Password
+                                    </label>
+                                  </div>
+                                </div>
                               </>
                             )}
                             <div className="col-12">
@@ -266,7 +338,9 @@ const Form = () => {
                                   className="btn btn-dark btn-lg"
                                   type="submit"
                                 >
-                                  {activeTab === "sign_in" ? "Sign In" : "Sign Up"}
+                                  {activeTab === "sign_in"
+                                    ? "Sign In"
+                                    : "Sign Up"}
                                 </button>
                               </div>
                             </div>
@@ -274,15 +348,15 @@ const Form = () => {
                         </form>
                         <div className="row">
                           <div className="col-12">
-                            <div className="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-center mt-1">
-                                {activeTab === "sign_in" && (
-                                    <Link
-                                    to="/forgot-password"
-                                    className="link-secondary text-decoration-none link_forgot_pass"
-                                    >
-                                    Forgot Password?
-                                    </Link>
-                                )}
+                            <div className="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-center mt-0">
+                              {activeTab === "sign_in" && (
+                                <Link
+                                  to="/forgot-password"
+                                  className="link-secondary text-decoration-none link_forgot_pass"
+                                >
+                                  Forgot Password?
+                                </Link>
+                              )}
                             </div>
                           </div>
                         </div>
