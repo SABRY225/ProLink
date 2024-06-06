@@ -82,7 +82,7 @@ export default function Navbar() {
 
     const name = data.firstName + " " + data.lastName;
     const ImgProfile = data.profilePicture;
-    
+console.log(data);
     dispatch(setId(data.id))
     dispatch(setName(name));
     dispatch(setBackImage(data.backImage));

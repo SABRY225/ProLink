@@ -41,3 +41,7 @@ export {default as ChangePassword} from "../Setting/ChangePassword/ChangePasswor
 export {default as NewPasswordRouter} from "../Setting/ChangePassword/NewPassRouter"
 export {default as EnterOTP} from "../Setting/ChangePassword/EnterOTP"
 
+export {default as CVProfile} from "../Setting/CVProfile/CVProfile"
+export {default as JobPages} from "../Home/Jobs/Jobs"
+
+

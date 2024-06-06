@@ -4,6 +4,7 @@ import Explor from "../../../assets/search.png"
 import message from "../../../assets/message.png"
 import notification from "../../../assets/notification.png"
 import Friend from "../../../assets/icons_friend.png"
+import Jobs_Icon from "../../../assets/icons_Jobs.png"
 import { Link } from 'react-router-dom'
 function SlidBar() {
     return (
@@ -26,6 +27,13 @@ function SlidBar() {
                 <Link to='/home/friend' className='sub-menu-link-2' >
                     <img src={Friend} alt="Friend" />
                     <p>Friends</p>
+                    <span></span>
+                </Link>
+            </div>
+            <div className="col-md-12">
+                <Link to='/home/Jobs' className='sub-menu-link-2' >
+                    <img src={Jobs_Icon} alt="Jobs" />
+                    <p>Jobs</p>
                     <span></span>
                 </Link>
             </div>
