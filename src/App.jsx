@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Store from './Redux/Story';
 import {LayoutAPP,LayoutAuth,JustFirst} from "./Layout/index";
-import {  SignIn,SignUp } from './Components/Auth/index';
+import {  SignUp } from './Components/Auth/index';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
 import ProtectedRoutes from './Components/ProtectedRoutes/ProtectedRoutes';
 import Home from './Components/Home/Home.jsx';
@@ -19,8 +19,8 @@ const routers = createBrowserRouter([
     path: "/",
     element: <JustFirst />,
     children: [
-      { index: true, element: <SignIn /> },
-      { path: "signin", element: <SignIn /> },
+      { index: true, element: <SignUp /> },
+      { path: "signin", element: <SignUp /> },
       { path: "*", element: <ErrorPage /> },
     ],
   },
@@ -60,7 +60,7 @@ const routers = createBrowserRouter([
     path: "/",
     element: <LayoutAuth />,
     children: [
-      { path: "signin", element: <SignIn /> },
+      // { path: "signin", element: <SignUp /> },
       { path: "signup", element: <SignUp /> },
       { path: "verify-otp", element: <Otp /> },
       { path: "forgot-password", element: <ForgotPassword />},
