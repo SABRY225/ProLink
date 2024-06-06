@@ -9,7 +9,7 @@ import {  SignIn,SignUp } from './Components/Auth/index';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
 import ProtectedRoutes from './Components/ProtectedRoutes/ProtectedRoutes';
 import Home from './Components/Home/Home.jsx';
-import {BackImage, ChangePassword, ExplorPages, InfoUser, Profile,Setting, UserImage,Friends, Messages, Notification, Default,Otp,ForgotPassword,ResetPassword, NewPasswordRouter, EnterOTP} from './Components/ImportFile/index.jsx';
+import {BackImage, ExplorPages, InfoUser, Profile,Setting, UserImage,Friends, Messages, Notification, Default,Otp,ForgotPassword,ResetPassword, NewPasswordRouter, CVProfile, JobPages} from './Components/ImportFile/index.jsx';
 import HomePages from './Pages/HomePages.jsx';
 
 
@@ -38,13 +38,15 @@ const routers = createBrowserRouter([
           { path: "explor", element: <ExplorPages />},
           { path: "friend", element: <Friends />},
           { path: "message", element: <Messages />},
-          { path: "notification", element: <Notification /> }
+          { path: "notification", element: <Notification /> },
+          { path: "Jobs", element: <JobPages /> }
         ]},
         {path:"profile",element:<Profile />},
         {path:"setting",element:<Setting />,children:[
           {path:"UserImage",element:<UserImage />},
           {index:true,element:<InfoUser />},
           {path:"BackImage",element:<BackImage />},
+          {path:"CV_Profile",element:<CVProfile />},
           {path:"NewPasswordRouter",element:<NewPasswordRouter />},
           
         ]},

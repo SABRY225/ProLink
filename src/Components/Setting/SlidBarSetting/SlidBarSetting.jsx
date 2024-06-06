@@ -3,6 +3,7 @@ import back_image from "../../../assets/back_image.png"
 import icons_user from "../../../assets/icons_user.png"
 import user_image from "../../../assets/user_image.png"
 import Change_password from "../../../assets/change-password.png"
+import CV_Profile from "../../../assets/icons_cv.png"
 import { Link } from 'react-router-dom'
 function SlidBarSetting() {
     return (
@@ -25,6 +26,13 @@ function SlidBarSetting() {
                 <Link to='/setting/BackImage/' className='sub-menu-link-2' >
                     <img src={back_image} alt="back_image" />
                     <p>Edite background Image</p>
+                    <span></span>
+                </Link>
+            </div>
+            <div className="col-md-12">
+                <Link to='/setting/CV_Profile/' className='sub-menu-link-2' >
+                <img src={CV_Profile} alt="CV_Profile" />
+                    <p>CV Profile</p>
                     <span></span>
                 </Link>
             </div>

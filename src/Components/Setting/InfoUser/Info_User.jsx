@@ -6,6 +6,8 @@ import {allSkills} from "../../Data/Skills/data"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faBriefcase, faPhone, faTasks, faComment, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 const InfoUser = () => {
+    // const tok = useSelector((state) => state.auth.token);
+    // const firstName=
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
