@@ -1,12 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 
-export default  function UserInfo() {
-    const backImage = useSelector((state) => state.profile.backImage);
-    const profilePicture = useSelector((state) => state.profile.profilePicture);
+const UserInfo=({firstName,lastName,backImage,profilePicture,followersCount,jobTitle})=> {
+    console.log(jobTitle);
     const jopTitle = useSelector((state) => state.profile.jopTitle);
-    const Name = useSelector((state) => state.profile.Name);
-    const followersCount = useSelector((state) => state.profile.followersCount);
+    const Name = firstName+" "+lastName;
     console.log(followersCount);
   return (
         <>
@@ -21,10 +19,10 @@ export default  function UserInfo() {
             <h2>{Name}</h2>
             </div>
             <div className="col-md-12 p-2">
-            <h3 style={{color:"#ABB2B9"}}>{jopTitle}</h3>
+            <h4 style={{color:"#ABB2B9"}}>{jobTitle}</h4>
             </div>
             <div className="col-md-12 p-2">
-            <h4 style={{color:"#ABB2B9"}}>{followersCount} Followers</h4>
+            <h4 style={{color:"#197BE3"}}>{followersCount} Followers</h4>
             </div>
             <div className="col-md-12 p-2">
             <h4 style={{color:"#566573"}}><hr/></h4>
@@ -34,3 +32,5 @@ export default  function UserInfo() {
         </>
 )
 }
+
+export default UserInfo;

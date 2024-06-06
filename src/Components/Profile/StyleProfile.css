@@ -114,3 +114,29 @@
 .btn-inactive:hover {
     background-color: #b3b3b3;
 }
+/* styles.css */
+
+.skillBoxAll {
+    margin-top: 10px;
+  }
+  
+  .skillbox {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+  }
+  
+  .box {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 20px;
+  }
+  
+  .text-start {
+    text-align: start;
+  }
+  

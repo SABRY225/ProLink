@@ -74,7 +74,7 @@ function BackImage() {
     };
     const getDataUser = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5292/api/User/get-Current-user', {
+            const { data } = await axios.get('http://localhost:5292/api/User/get-BackImage', {
                 headers: {
                     'Authorization': 'Bearer ' + tok,
                     "Content-Type": "application/json"
@@ -100,7 +100,7 @@ function BackImage() {
                     {isDoneFile  && selectedFile ? (
                         <img src={URL.createObjectURL(selectedFile)} alt="User Profile" className='UserBackImageProfile' />
                     ) : (
-                        <img src={data.backImage } alt="Default User" className='UserBackImageProfile' />
+                        <img src={data} alt="Default User" className='UserBackImageProfile' />
                     )}
                     {isEditing && (
                         <div className='row d-flex text-center'>

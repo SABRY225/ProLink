@@ -10,7 +10,7 @@ const CVProfile = () => {
     const [data,setData]=useState([]);
     const getDataUser = async () => {
         try {
-            const { data } = await axios.get(process.env.REACT_APP_USER, {
+            const { data } = await axios.get('http://localhost:5292/api/User/get-CV', {
                 headers: {
                     'Authorization': 'Bearer ' + tok,
                     "Content-Type": "application/json"
@@ -53,23 +53,23 @@ const CVProfile = () => {
     useEffect(() => {
         getDataUser();
     }, [tok,handleDeleteCV]);
-    console.log(data.cv);
+    console.log(data);
 
     return (
         <div>
             <h1 style={{ marginTop: "1rem" }}>
                 <FontAwesomeIcon icon={faUser} style={{ color: '#5DADE2' }} /> CV Profile
             </h1>
-            {data.cv!=null ? (
+            {data!=null ? (
                 <CVComponent
-                    cvData={data.cv}
+                    cvData={data}
                     onDelete={handleDeleteCV}
                     onUpdate={UploadCV} // Assuming you need an update function as well
                 />
             ) : (
                 !isDonee ?  (
                     <CVComponent
-                        cvData={data.cv}
+                        cvData={data}
                         onDelete={handleDeleteCV}
                         onUpdate={UploadCV} // Assuming you need an update function as well
                     />

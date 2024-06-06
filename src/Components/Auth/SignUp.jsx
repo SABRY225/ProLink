@@ -9,6 +9,7 @@ import "./StyleAuth.css";
 
 const Form = () => {
   const [activeTab, setActiveTab] = useState("sign_in");
+  console.log(activeTab);
   const [inputs, setInputs] = useState({
     firstName: "",
     lastName: "",
@@ -349,14 +350,14 @@ const Form = () => {
                         <div className="row">
                           <div className="col-12">
                             <div className="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-center mt-0">
-                              {activeTab === "sign_in" && (
+                              {activeTab === "sign_in" ? (
                                 <Link
                                   to="/forgot-password"
                                   className="link-secondary text-decoration-none link_forgot_pass"
                                 >
                                   Forgot Password?
                                 </Link>
-                              )}
+                              ):""}
                             </div>
                           </div>
                         </div>
