@@ -1,35 +1,32 @@
-import React, { useEffect, useState } from 'react'
-import icons_friend from "../../../assets/icons_friend.png"
-import axios from 'axios';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import icons_friend from "../../../assets/icons_friend.png";
 
-function Friend() {
-  const tok = useSelector((state) => state.auth.token);
-  const [data, setData] = useState([]);
-  const getFrientData = async () => {
-    try {
-        const { data } = await axios.get(process.env.REACT_APP_GETFRIEND, {
-            headers: {
-                'Authorization': 'Bearer ' + tok,
-                "Content-Type": "application/json"
-            }
-        });
-        setData(data);
-    } catch (error) {
-            console.log(error.message);
-    }
-
-};
-useEffect(() => {
-  getFrientData();
-}, [tok]);
-console.log(data);
+const Friend = ({ friends }) => {
   return (
     <div className='col-md-12 box m-2'>
-      <h3 className='text-start'><img src={icons_friend} />Friends</h3>
-      {/* <p>{skill}</p> */}
+      <h3 className='text-start'>
+        <img src={icons_friend} alt="Friends Icon" />Friends
+      </h3>
+      <div className="skillBoxAll " style={{ display: 'flex', flexWrap: 'wrap',justifyContent:"center" }}>
+        {friends.map((friend, index) => (
+          <>
+          <div key={index} className='friendbox col-md-5 m-1' style={{ display: 'flex', alignItems: 'center' }}>
+            <img 
+              src={friend.profilePicture ? friend.profilePicture : "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"} 
+              alt="imgFriend" 
+              className='imgFriend' 
+              style={{ width: '55px', height: '50px', borderRadius: '50%', marginRight: '10px' }}
+            />
+            <div>
+              <div className='friendboxName' style={{ color: "#283747" }}>{friend.firstName + " " + friend.lastName}</div>
+              <div className='friendboxName' style={{ color: "#3498DB" }}>Front-End</div>
+            </div>
+          </div>
+          </>
+        ))}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Friend
+export default Friend;

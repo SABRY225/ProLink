@@ -51,9 +51,9 @@ function NotificationCard({ notification, onDelete }) {
   };
 
   return (
-    <div className="toast-custom">
+    <div className="col-sm-12 col-lg-9 toast-custom">
       <div className="toast-img-container">
-        <img className="toast-image rounded-circle" src={sender.profilePicture} alt="User" />
+        <img className="toast-image rounded-circle" src={sender.profilePicture?sender.profilePicture:"https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg"} alt="User" />
       </div>
       <div className="toast-content toast-with-image">
         <span className="toast-title"><b>{sender.firstName} {sender.lastName}</b></span>

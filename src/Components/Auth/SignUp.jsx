@@ -83,6 +83,9 @@ const Form = () => {
       return;
     }
     console.log(inputs);
+    console.log(
+      JSON.stringify(inputs),
+    );
     try {
       const response = await axios.post(
         process.env.REACT_APP_REGISTER,

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { storage } from '../../config/firebase';
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import axios from 'axios';
-const PostForm = ({ addPost, data }) => {
+const PostForm = ({ data }) => {
     const tok = useSelector((state) => state.auth.token);
     const [content, setContent] = useState('');
     const [image, setImage] = useState(false);

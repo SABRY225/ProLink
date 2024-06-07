@@ -128,7 +128,25 @@
     color: #fff;
     border-radius: 5px;
   }
-  
+  .friendbox{
+    padding: 5px 10px;
+    margin: 10px;
+    background-color:#ECF0F1 ;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .friendbox img {
+    width: 6rem;
+    background: #e5e5e500;
+    padding: 0px;
+    margin-right: 0px;
+    border-radius: 50%;
+}
+  .friendboxName{
+    font-size: 10px;
+  }
   .box {
     background-color: #f8f9fa;
     border: 1px solid #dee2e6;
