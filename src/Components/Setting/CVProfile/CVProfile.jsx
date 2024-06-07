@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import CVComponent from './CVComponent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
 const CVProfile = () => {
+    const dispatch =useDispatch();
     const tok = useSelector((state) => state.auth.token);
     const [data,setData]=useState([]);
     const getDataUser = async () => {
