@@ -5,13 +5,16 @@ import { useSelector } from 'react-redux';
 import { storage } from '../../config/firebase';
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import axios from 'axios';
+
 const PostForm = ({ data }) => {
     const tok = useSelector((state) => state.auth.token);
     const [content, setContent] = useState('');
+    const [jobTitle, setJobTitle] = useState('');
     const [image, setImage] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
-    const [isDone, setIsDone] = useState(false);
+    const [isJobPost, setIsJobPost] = useState(false);
     const profilePicture = useSelector((state) => state.profile.profilePicture);
+
     const handleFileChange = (e) => {
         if (e.target && e.target.files && e.target.files.length > 0) {
             setSelectedFile(e.target.files[0]);
@@ -21,50 +24,43 @@ const PostForm = ({ data }) => {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        if (content.trim() || image) {
+
+        if (!content.trim() && !image) {
+            return;
+        }
+
+        let downloadURL = '';
+        if (image && selectedFile) {
+            const storageRef = ref(storage, `imagespost/${selectedFile.name}`);
+            const snapshot = await uploadBytes(storageRef, selectedFile);
+            downloadURL = await getDownloadURL(snapshot.ref);
+        }
+
+        const postData = {
+            description: content,
+            postImage: downloadURL,
+        };
+
+        if (isJobPost) {
+            postData.title = jobTitle;
+        }
+
+        try {
+            const url = isJobPost ? `http://localhost:5292/api/Job` : `http://localhost:5292/api/Post`;
+            await axios.post(url, postData, {
+                headers: {
+                    'Authorization': 'Bearer ' + tok,
+                    'Content-Type': 'application/json'
+                }
+            });
+
             setContent('');
             setSelectedFile(null);
             setImage(false);
-        }
-        console.log(selectedFile);
-        const storageRef = ref(storage, `imagespost/${selectedFile.name}`);
-        console.log(storageRef);
-        const snapshot = await uploadBytes(storageRef, selectedFile);
-        const downloadURL = await getDownloadURL(snapshot.ref);
-        console.log(isDone);
-        if (isDone) {
-            console.log('User wants to post');
-            try {
-                    await axios.post(`http://localhost:5292/api/Post`,{
-                        description: content,
-                        postImage: downloadURL
-                    }, {
-                        headers: {
-                            'Authorization': 'Bearer ' + tok,
-                            'Content-Type': 'application/json'
-                        }
-                    });
-                    alert("post");
-            } catch (err) {
-                console.log(err);
-            }
-        } else {
-            console.log('User wants to apply for a job');
-            try {
-                    await axios.post(`http://localhost:5292/api/Job`, {
-                        title: "string",
-                        description: content,
-                        postImage: downloadURL
-                    }, {
-                        headers: {
-                            'Authorization': 'Bearer ' + tok,
-                            'Content-Type': 'application/json'
-                        }
-                    });
-                    alert("job");
-            } catch (err) {
-                console.log(err);
-            }
+            setJobTitle('');
+            setIsJobPost(false);
+        } catch (err) {
+            console.error(err);
         }
     };
 
@@ -85,21 +81,32 @@ const PostForm = ({ data }) => {
                     rows="1"
                     cols="50"
                 />
+                {isJobPost && (
+                    <input
+                        type="text"
+                        className="post-form__input"
+                        value={jobTitle}
+                        onChange={(e) => setJobTitle(e.target.value)}
+                        placeholder="Job Title"
+                    />
+                )}
                 {image && (
                     <div className="image-preview">
                         <img className="displayImgPost" style={{ width: "10vw", height: "20vh" }} src={URL.createObjectURL(selectedFile)} alt="Post" />
                     </div>
                 )}
-                <input type="file" className='Uplode_Image' name='description' id="fileInput" onChange={handleFileChange} />
-                <label htmlFor="fileInput" className="UploadButton">
-                    <span className="UploadButtonLabel"><FontAwesomeIcon icon={faImage} /></span>
-                </label>
-                <button className="post-form__button_Post" type='submit' onClick={()=>{setIsDone(true)}}>
-                    Post <FontAwesomeIcon icon={faSignsPost} /> 
-                </button>
-                <button className="post-form__button_Jobs" type='submit'>
-                    Job <FontAwesomeIcon icon={faBriefcase} onClick={()=>{setIsDone(false)}}/>
-                </button>
+                <div className="button-group">
+                    <label htmlFor="fileInput" className="UploadButton">
+                        <FontAwesomeIcon icon={faImage} />
+                    </label>
+                    <input type="file" className='Uplode_Image' name='description' id="fileInput" onChange={handleFileChange} />
+                    <button className="post-form__button_Post" type='submit' onClick={() => setIsJobPost(false)}>
+                        Post <FontAwesomeIcon icon={faSignsPost} /> 
+                    </button>
+                    <button className="post-form__button_Jobs" type='submit' onClick={() => setIsJobPost(true)}>
+                        Job <FontAwesomeIcon icon={faBriefcase} />
+                    </button>
+                </div>
             </form>
         </div>
     );

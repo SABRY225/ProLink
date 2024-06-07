@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import StatisticsCards from './StatisticsCards';
 import StatisticsButtons from './StatisticsButtons';
 import "./Explor.css";
+import ExplorJob from './ExplorJob';
+import NoResult from './NoResult';
 
 function Explor() {
   const tok = useSelector((state) => state.auth.token);
@@ -107,8 +109,6 @@ function Explor() {
         jobs={statistics.jobsCount} 
       />
       <StatisticsButtons onButtonClick={handleButtonClick} />
-      {activeButton && <h1 className="text-center mt-4">{activeButton}</h1>}
-      <h2 className="text-center mt-4">Search Value: {searchValue}</h2>
       <div className="results">
 
         {activeButton === 'Users' && users.length > 0 ? (
@@ -126,13 +126,11 @@ function Explor() {
           ))
         ) 
         : activeButton === 'Jobs' && jobs.length > 0 ? (
-          jobs.map((job, index) => (
-            <div key={index} className="result-item">
-              {JSON.stringify(job)}
-            </div>
+          jobs.map((job) => (
+            <ExplorJob key={job.id} post={job}/>
           ))
         ) : (
-          <p>No results found</p>
+          searchValue&& <NoResult/>
         )}
       </div>
     </>

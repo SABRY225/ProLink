@@ -1,3 +1,153 @@
+.no-result-container {
+  text-align: center;
+  padding: 50px;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 600px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.no-result-icon {
+  font-size: 50px;
+  color: #3498DB;
+  margin-bottom: 20px;
+}
+
+.no-result-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.no-result-message {
+  font-size: 16px;
+  color: #666;
+}
+
+.post-image {
+  width: 85%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+.instagram-card {
+  background: #ffffff;
+  border: 1px solid #f2f2f2;
+  border-radius: 3px;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.instagram-card-header {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.instagram-card-user-image {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+.instagram-card-link{
+  color: #262626;
+font-size: 1.3rem;
+}
+.instagram-card-user-name {
+  /* margin-left: 0px; */
+  
+  font-weight: bold;
+  color: #262626;
+}
+
+.instagram-card-job-title {
+  /* margin-left: 20px; */
+  font-size: 0.8rem;
+  color: #888;
+  font-style: italic;
+}
+
+.instagram-card-content {
+  padding:0 20px;
+}
+
+.instagram-card-content p {
+  font-size: 16px;
+  color: #262626;
+}
+
+.instagram-card-content-job-title {
+  font-weight: bold;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+  text-align: start;
+}
+
+
+
+.btnApplyJob {
+  /* margin-top: 2rem; */
+  background-color: #3498DB;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btnApplyJob:hover {
+  background-color: #2980B9;
+  transform: scale(1.05);
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
+.footer-action-icons {
+  font-size: 16px;
+  color: #ccc;
+}
+
+.comments-input {
+  border: none;
+  margin-left: 10px;
+  width: 100%;
+}
+
+.btnApplyJob {
+  background-color: #3498DB;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btnApplyJob:hover {
+  background-color: #2980B9;
+}
+
+
+
 .searchbar {
     margin-left: 20vw;
   }
