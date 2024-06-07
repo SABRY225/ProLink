@@ -119,17 +119,7 @@ const Form = () => {
                   <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
                     <div className="col-12 col-lg-11 col-xl-10">
                       <div className="card-body p-3 p-md-4 px-xl-5">
-                        <div className="row">
-                          <div className="col-12">
-                            <div className="mb-0">
-                              <div className="text-center mb-0">
-                                {/* <a href="#!">
-                                  <img src={img} alt="BootstrapBrain Logo" width={175} height={57} />
-                                </a> */}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                        
                         <div className="cont_tabs_login">
                           <ul className="ul_tabs">
                             <li

@@ -77,7 +77,6 @@ const AppContainer = styled.div`
 
 const SearchInput = () => {
     const dispatcher = useDispatch();
-    const navigate = useNavigate();
     const [inputValue, setInputValue] = useState('');
     const [isActive, setIsActive] = useState(false);
 
@@ -87,7 +86,6 @@ const SearchInput = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatcher(setSearch(inputValue));
-        navigate(`/search`);
     };
 
     const handleKeyPress = (e) => {

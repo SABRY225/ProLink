@@ -2,7 +2,7 @@ import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const PostList = () => {
     const [data, setData] = useState([]);
@@ -20,7 +20,7 @@ const PostList = () => {
             console.log(data);
         } catch (error) {
             if (error.message === "Request failed with status code 401") {
-                dispatch(loginSuccess(""))
+                useDispatch(loginSuccess(""))
             }
         }
     };

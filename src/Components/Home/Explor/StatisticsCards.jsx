@@ -7,8 +7,12 @@ import SearchBar from '../../NavBar/SearchBar/SearchBar';
 
 function StatisticsCards({ users, posts, jobs }) {
   return (
-    <Container className="grey-bg container-fluid d-flex justify-content-center mt-5">
-        <SearchBar/>
+    <Container className="grey-bg container d-flex flex-column align-items-center mt-0 overflow-hidden">
+      <Row className="w-100 justify-content-start mb-4 mt-3 searchbar">
+        <Col xs={12} md={10} lg={8} xl={6}>
+          <SearchBar />
+        </Col>
+      </Row>
       <section id="minimal-statistics" className="w-100">
         <Row className="justify-content-center">
           <Col xl={3} lg={4} md={6} sm={8} xs={10} className="mb-3">
