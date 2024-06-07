@@ -94,8 +94,7 @@ font-size: 1.3rem;
 
 
 .btnApplyJob {
-  /* margin-top: 2rem; */
-  background-color: #3498DB;
+  margin-top: 2rem;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -105,10 +104,33 @@ font-size: 1.3rem;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.btnApplyJob:hover {
-  background-color: #2980B9;
+.btnApplyJob:active {
+  transform: scale(1);
+}
+
+.btnApplyJob:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+}
+
+.btnApplyJob.apply {
+  background-color: #3498db;
+}
+
+.btnApplyJob.apply:hover {
+  background-color: #2980b9;
   transform: scale(1.05);
 }
+
+.btnApplyJob.cancel {
+  background-color: #e74c3c;
+}
+
+.btnApplyJob.cancel:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
+}
+
 
 hr {
   border: none;

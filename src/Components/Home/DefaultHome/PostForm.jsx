@@ -6,7 +6,7 @@ import { storage } from '../../config/firebase';
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import axios from 'axios';
 
-const PostForm = ({ data }) => {
+const PostForm = () => {
     const tok = useSelector((state) => state.auth.token);
     const [content, setContent] = useState('');
     const [jobTitle, setJobTitle] = useState('');
@@ -22,7 +22,7 @@ const PostForm = ({ data }) => {
         }
     };
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e, isJob) => {
         e.preventDefault();
 
         if (!content.trim() && !image) {
@@ -41,12 +41,12 @@ const PostForm = ({ data }) => {
             postImage: downloadURL,
         };
 
-        if (isJobPost) {
+        if (isJob) {
             postData.title = jobTitle;
         }
 
         try {
-            const url = isJobPost ? `http://localhost:5292/api/Job` : `http://localhost:5292/api/Post`;
+            const url = isJob ? `http://localhost:5292/api/Job` : `http://localhost:5292/api/Post`;
             await axios.post(url, postData, {
                 headers: {
                     'Authorization': 'Bearer ' + tok,
@@ -65,50 +65,67 @@ const PostForm = ({ data }) => {
     };
 
     return (
-        <div className="post-form">
-            <div className='post-form-info'>
+        <form className="post-form" onSubmit={(e) => handleSubmit(e, isJobPost)}>
+            <div className="post-form-info">
                 <div className="imgInfoUserPost">
-                    <img style={{ width: "3rem", borderRadius: "50%", height: "3rem" }} src={profilePicture ? profilePicture : "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"} alt="User" />
-                </div>
-                <div className="InfoUserPost"> {data.firstName + " " + data.lastName}</div>
-            </div>
-            <form onSubmit={handleSubmit}>
-                <textarea
-                    className="post-form__textarea TextAreaFiled"
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
-                    placeholder="What's on your mind ....?"
-                    rows="1"
-                    cols="50"
-                />
-                {isJobPost && (
-                    <input
-                        type="text"
-                        className="post-form__input"
-                        value={jobTitle}
-                        onChange={(e) => setJobTitle(e.target.value)}
-                        placeholder="Job Title"
+                    <img
+                        style={{ width: "3rem", borderRadius: "50%", height: "3rem", marginTop: "-10px" }}
+                        src={profilePicture ? profilePicture : "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"}
+                        alt="User"
                     />
-                )}
-                {image && (
-                    <div className="image-preview">
-                        <img className="displayImgPost" style={{ width: "10vw", height: "20vh" }} src={URL.createObjectURL(selectedFile)} alt="Post" />
-                    </div>
-                )}
-                <div className="button-group">
-                    <label htmlFor="fileInput" className="UploadButton">
-                        <FontAwesomeIcon icon={faImage} />
-                    </label>
-                    <input type="file" className='Uplode_Image' name='description' id="fileInput" onChange={handleFileChange} />
-                    <button className="post-form__button_Post" type='submit' onClick={() => setIsJobPost(false)}>
-                        Post <FontAwesomeIcon icon={faSignsPost} /> 
-                    </button>
-                    <button className="post-form__button_Jobs" type='submit' onClick={() => setIsJobPost(true)}>
-                        Job <FontAwesomeIcon icon={faBriefcase} />
-                    </button>
                 </div>
-            </form>
-        </div>
+                <div className="post-form-input-group">
+                    <textarea
+                        className="post-form__textarea TextAreaFiled"
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
+                        placeholder="What's on your mind ....?"
+                        rows="1"
+                        cols="50"
+                    />
+                    {isJobPost && (
+                        <input
+                            type="text"
+                            className="post-form__input"
+                            value={jobTitle}
+                            onChange={(e) => setJobTitle(e.target.value)}
+                            placeholder="Job Title"
+                        />
+                    )}
+                </div>
+            </div>
+            {image && (
+                <div className="image-preview">
+                    <img className="displayImgPost" style={{ width: "10vw", height: "20vh" }} src={URL.createObjectURL(selectedFile)} alt="Post" />
+                </div>
+            )}
+            <div className="button-group">
+                <label htmlFor="fileInput" className="UploadButton">
+                    <FontAwesomeIcon icon={faImage} />
+                </label>
+                <input type="file" className='Uplode_Image' name='description' id="fileInput" onChange={handleFileChange} />
+                <button
+                    className="post-form__button_Post"
+                    type='button'
+                    onClick={(e) => {
+                        setIsJobPost(false);
+                        handleSubmit(e, false);
+                    }}
+                >
+                    Post <FontAwesomeIcon icon={faSignsPost} />
+                </button>
+                <button
+                    className="post-form__button_Jobs"
+                    type='button'
+                    onClick={(e) => {
+                        setIsJobPost(true);
+                        handleSubmit(e, true);
+                    }}
+                >
+                    Job <FontAwesomeIcon icon={faBriefcase} />
+                </button>
+            </div>
+        </form>
     );
 };
 
