@@ -6,6 +6,7 @@ import StatisticsButtons from './StatisticsButtons';
 import "./Explor.css";
 import ExplorJob from './ExplorJob';
 import NoResult from './NoResult';
+import UserCard from './UserCard';
 
 function Explor() {
   const tok = useSelector((state) => state.auth.token);
@@ -112,10 +113,8 @@ function Explor() {
       <div className="results">
 
         {activeButton === 'Users' && users.length > 0 ? (
-          users.map((user, index) => (
-            <div key={index} className="result-item">
-              {JSON.stringify(user)}
-            </div>
+          users.map((user) => (
+            <UserCard key={user.id} user={user}/>
           ))
         ) 
         : activeButton === 'Posts' && posts.length > 0 ? (
