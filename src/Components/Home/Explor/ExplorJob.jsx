@@ -30,7 +30,7 @@ function ExplorJob({ post }) {
     const handleCancelJobRequest = async (requestId) => {
         try {
             console.log("Request ID for cancellation: ", requestId); // Debugging line
-            await axios.delete(`http://localhost:5292/api/JobReques/delete-jobRequest?requestId=${requestId}`, {
+            await axios.delete(`http://localhost:5292/api/JobReques/delete-jobRequest?jobId=${requestId}`, {
                 headers: {
                     'Authorization': 'Bearer ' + tok,
                     'Content-Type': 'application/json'
@@ -65,7 +65,7 @@ function ExplorJob({ post }) {
                 {UID !== post.user.id && post.isAvailable && (
                     <button 
                         className={`btnApplyJob mb-2 ${isRequestSent ? 'cancel' : 'apply'}`} 
-                        onClick={() => isRequestSent ? handleCancelJobRequest(post.requestId) : handleApplyJob(post.id)}
+                        onClick={() => isRequestSent ? handleCancelJobRequest(post.id) : handleApplyJob(post.id)}
                     >
                         {isRequestSent ? 'Cancel Job Request' : 'Apply Job'} 
                         <FontAwesomeIcon icon={faBriefcase} />

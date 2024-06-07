@@ -47,7 +47,7 @@ const PostList = () => {
 
     const handleCancelJobRequest = async (requestId) => {
         try {
-            await axios.delete(`http://localhost:5292/api/JobReques/delete-jobRequest?requestId=${requestId}`, {
+            await axios.delete(`http://localhost:5292/api/JobReques/delete-jobRequest?jobId=${requestId}`, {
                 headers: {
                     'Authorization': 'Bearer ' + tok,
                     "Content-Type": "application/json"
@@ -93,7 +93,7 @@ const PostList = () => {
                             {UID !== post.user.id && post.isAvailable && (
                                 <button
                                     className='btnApplyJob'
-                                    onClick={() => post.isRequestSent ? handleCancelJobRequest(post.requestId) : handleApplyJob(post.id)}
+                                    onClick={() => post.isRequestSent ? handleCancelJobRequest(post.id) : handleApplyJob(post.id)}
                                     style={{ backgroundColor: post.isRequestSent ? 'red' : '#007bff' }}
                                 >
                                     {post.isRequestSent ? 'Cancel Job Request' : 'Apply Job'}
