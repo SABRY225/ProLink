@@ -7,6 +7,7 @@ import { loginSuccess } from '../../Redux/authSlice'; // Import your login actio
 
 export default function Profile() {
   const [data, setData] = useState({});
+  const [friends, setFriends] = useState([]);
   const tok = useSelector((state) => state.auth.token);
   const dispatch = useDispatch(); // Get the dispatch function
 
@@ -18,8 +19,14 @@ export default function Profile() {
                   "Content-Type": "application/json"
               }
           });
+          const Friends = await axios.get('http://localhost:5292/api/Friend/get', {
+              headers: {
+                  'Authorization': 'Bearer ' + tok,
+              }
+          });
           setData(response.data);
-          console.log(response.data);
+          setFriends(Friends.data)
+          console.log(Friends.data);
       } catch (error) {
           console.log(error);
           if (error.response && error.response.status === 401) {
@@ -48,7 +55,7 @@ export default function Profile() {
         <div className="col-md-4 profile-sidebar">
           <About description={data.description} />
           <Skills skills={skills} />
-          <Friend />
+          <Friend friends={friends}/>
           <Follower />
         </div>
         <div className="col-md-1"></div>

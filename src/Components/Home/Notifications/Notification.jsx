@@ -23,17 +23,32 @@ export default function Notification() {
       console.error('Error fetching notifications:', error);
     }
   };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const handleDelete = (id) => {
     setNotifications(notifications.filter(notification => notification.id !== id));
   };
+  useEffect(() => {
+    fetchData();
+  },[]);
+
+
+  const handleDeleteAll=async()=>{
+    try {
+      const response = await axios.delete('http://localhost:5292/api/Notification/delete-all',{
+        headers: {
+            'Authorization': 'Bearer ' + tok,
+        }
+      });
+      alert(response.data);
+    } catch (error) {
+      alert('Error fetching notifications:', error);
+    }
+  }
 
   return (
     <>
+    <div className="text-end">
+      <button className="deleteAllNotifivation" onClick={handleDeleteAll}>Delete All</button>
+    </div>
       {notifications.map(notification => (
         <NotificationCard key={notification.id} notification={notification} onDelete={handleDelete} />
       ))}

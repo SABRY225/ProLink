@@ -85,15 +85,25 @@
 }
 
 .post {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: #fff;
+    border: 1px solid #847f7f9a;
     margin: 10px 0;
     padding: 10px;
     border-radius: 5px;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    max-width: 600px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .post__image {
-    max-width: 100%;
+    width: 250px;
     height: auto;
     margin-top: 10px;
 }
@@ -127,4 +137,30 @@
 .TextAreaFiled:focus {
     outline: none;
     /* Remove default focus outline */
+}
+.btnApplyJob {
+    margin-top: 2rem;
+    background-color: #3498DB;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btnApplyJob:hover {
+    background-color: #2980B9;
+    transform: scale(1.05);
+}
+
+.btnApplyJob:active {
+    background-color: #1F618D;
+    transform: scale(1);
+}
+
+.btnApplyJob:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
 }
