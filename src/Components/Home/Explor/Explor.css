@@ -144,10 +144,7 @@ font-size: 1.3rem;
 .user-card-jobtitle{
 font-size: x-small;
 }
-.card-user-name{
-  
-  /* line-height: 0.6; */
-}
+
 .user-card {
   font-size: small;
   border: 1px solid #ccc;
