@@ -9,7 +9,7 @@ import {  SignUp } from './Components/Auth/index';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
 import ProtectedRoutes from './Components/ProtectedRoutes/ProtectedRoutes';
 import Home from './Components/Home/Home.jsx';
-import {BackImage, ExplorPages, InfoUser, Profile,Setting, UserImage,Friends, Messages, Notification, Default,Otp,ForgotPassword,ResetPassword, NewPasswordRouter, CVProfile, JobPages} from './Components/ImportFile/index.jsx';
+import {BackImage, ExplorPages, InfoUser, Profile,Setting, UserImage,Friends, Messages, Notification, Default,Otp,ForgotPassword,ResetPassword, NewPasswordRouter, CVProfile, JobPages, Explor} from './Components/ImportFile/index.jsx';
 import HomePages from './Pages/HomePages.jsx';
 
 
@@ -35,7 +35,9 @@ const routers = createBrowserRouter([
       { path: "/", element: <HomePages /> ,children:[
         {path:"home",element:<Home />,children:[
           {index:true,element:<Default />},
-          { path: "explor", element: <ExplorPages />},
+          { path: "explor", element: <ExplorPages />,children:[
+            { index:true, element: <Explor />}
+          ]},
           { path: "friend", element: <Friends />},
           { path: "message", element: <Messages />},
           { path: "notification", element: <Notification /> },

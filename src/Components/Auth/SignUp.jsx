@@ -9,6 +9,7 @@ import "./StyleAuth.css";
 
 const Form = () => {
   const [activeTab, setActiveTab] = useState("sign_in");
+  console.log(activeTab);
   const [inputs, setInputs] = useState({
     firstName: "",
     lastName: "",
@@ -82,6 +83,9 @@ const Form = () => {
       return;
     }
     console.log(inputs);
+    console.log(
+      JSON.stringify(inputs),
+    );
     try {
       const response = await axios.post(
         process.env.REACT_APP_REGISTER,
@@ -115,17 +119,7 @@ const Form = () => {
                   <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
                     <div className="col-12 col-lg-11 col-xl-10">
                       <div className="card-body p-3 p-md-4 px-xl-5">
-                        <div className="row">
-                          <div className="col-12">
-                            <div className="mb-0">
-                              <div className="text-center mb-0">
-                                {/* <a href="#!">
-                                  <img src={img} alt="BootstrapBrain Logo" width={175} height={57} />
-                                </a> */}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                        
                         <div className="cont_tabs_login">
                           <ul className="ul_tabs">
                             <li
@@ -349,14 +343,14 @@ const Form = () => {
                         <div className="row">
                           <div className="col-12">
                             <div className="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-center mt-0">
-                              {activeTab === "sign_in" && (
+                              {activeTab === "sign_in" ? (
                                 <Link
                                   to="/forgot-password"
                                   className="link-secondary text-decoration-none link_forgot_pass"
                                 >
                                   Forgot Password?
                                 </Link>
-                              )}
+                              ):""}
                             </div>
                           </div>
                         </div>

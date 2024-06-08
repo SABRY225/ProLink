@@ -6,7 +6,6 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 
 const CVComponent = ({ cvData, onUpdate, onDelete }) => {
-  console.log(cvData);
   const tok = useSelector((state) => state.auth.token);
   const [isEditing, setIsEditing] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -42,7 +41,6 @@ const CVComponent = ({ cvData, onUpdate, onDelete }) => {
       setSelectedFile(e.target.files[0]);
     }
   };
-console.log(cvData);
   return (
     <div className="cv-container">
       {isEditing ? (
@@ -62,8 +60,8 @@ console.log(cvData);
             <a href={cvData} target="_blank" rel="noopener noreferrer">View CV</a>
           </h2>:" " }
 
-          <button onClick={() => setIsEditing(true)} className="action-button">Edit</button>
-          <button onClick={handleDelete} className="action-button">Delete</button>
+          <button onClick={() => setIsEditing(true)} className="action-button">{cvData ? (<span>Edite</span>) : (<span>Add CV</span>)}</button>
+          {cvData ?<button onClick={handleDelete} className="action-button" style={{background:"red"}}>Delete</button>:" "}
         </div>
       )}
     </div>

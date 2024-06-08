@@ -1,0 +1,89 @@
+.toast-custom {
+    display: flex;
+    align-items: center;
+    /* max-width: 60%; */
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+    position: relative;
+  }
+  
+  .toast-img-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 15px;
+  }
+  
+  .toast-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  
+  .toast-content {
+    flex-grow: 1;
+    text-align: start;
+  }
+  
+  .toast-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .toast-content p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  @media (max-width: 768px) {
+    .toast {
+      max-width: 100%;
+    }
+  }
+  
+  .notContent {
+    color: rgba(0, 0, 0, 0.611);
+  }
+  
+  .notTime {
+    color: rgba(0, 0, 0, 0.729);
+    font-size: small;
+  }
+  
+  .delete-button {
+    background: none;
+    border: none;
+    color: #ff6b6b;
+    cursor: pointer;
+    font-size: 1.2rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .delete-button:hover {
+    color: #ff4c4c;
+  }
+
+  .deleteAllNotifivation{
+    margin-top: 1rem;
+    background: #ef0909;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 5px 8px;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 10px;
+  }
+  .deleteAllNotifivation:hover {
+    color: #000;
+    background: #fff;
+    border: 1px solid #000;
+  }

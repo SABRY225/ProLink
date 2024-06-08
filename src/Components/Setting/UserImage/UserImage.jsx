@@ -71,7 +71,7 @@ function UserImage() {
     };
     const getDataUser = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5292/api/User/get-Current-user', {
+            const { data } = await axios.get('http://localhost:5292/api/User/get-picture', {
                 headers: {
                     'Authorization': 'Bearer ' + tok,
                     "Content-Type": "application/json"
@@ -95,7 +95,7 @@ function UserImage() {
                     {isDoneFile  && selectedFile ? (
                         <img src={URL.createObjectURL(selectedFile)} alt="User Profile" className='UserImageProfile' />
                     ) : (
-                        <img src={data.profilePicture} alt="Default User" className='UserImageProfile' />
+                        <img src={data} alt="Default User" className='UserImageProfile' />
                     )}
                     {isEditing && (
                         <div className='row d-flex text-center'>
