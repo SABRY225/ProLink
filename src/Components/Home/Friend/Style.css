@@ -1,0 +1,12 @@
+.container {
+  max-height: 90vh;
+}
+.title {
+  font-family: emoji;
+  border-bottom: 2px solid;
+  padding: 12px;
+}
+
+.requests::-webkit-scrollbar, .fans::-webkit-scrollbar {
+  display: none;
+}
