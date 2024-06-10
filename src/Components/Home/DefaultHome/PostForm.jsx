@@ -67,7 +67,6 @@ const PostForm = ({ data }) => {
             }
         }
     };
-
     return (
         <div className="post-form">
             <div className='post-form-info'>
