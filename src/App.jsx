@@ -43,7 +43,10 @@ const routers = createBrowserRouter([
           { path: "notification", element: <Notification /> },
           { path: "Jobs", element: <JobPages /> }
         ]},
-        {path:"profile",element:<Profile />},
+        {
+          path: "profile", element: <Profile />
+        },
+        { path: "ProfileUser", element: <Profile/>},
         {path:"setting",element:<Setting />,children:[
           {path:"UserImage",element:<UserImage />},
           {index:true,element:<InfoUser />},

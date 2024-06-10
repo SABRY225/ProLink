@@ -1,12 +1,26 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Image } from "react-bootstrap";
-
+import { useDispatch, useSelector } from "react-redux";
+import { setIdOtherUser } from "../../../Redux/profileSlice";
 function UserCard({ user }) {
-    console.log(user.jobTitle);
+  console.log(user);
+  const idCerrentUser = useSelector((state) => state.profile.id);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handelProfile = () => {
+    if (user.id == idCerrentUser) {
+      navigate("/profile");
+      dispatch(setIdOtherUser(user.id));
+    } else {
+      dispatch(setIdOtherUser(user.id));
+      navigate("/ProfileUser");
+    }
+  }
+  
   return (
     <div className="d-flex justify-content-center my-3">
-      <NavLink to={`/profile/${user.id}`} className="user-card-link">
+      <div onClick={handelProfile} className="user-card-link">
         <div className="user-card d-flex align-items-center">
           <Image
             src={user.profilePicture}
@@ -28,7 +42,7 @@ function UserCard({ user }) {
             </div>
           </div>
         </div>
-      </NavLink>
+      </div>
     </div>
   );
 }

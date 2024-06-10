@@ -12,7 +12,7 @@ function Posts() {
                 </div>
             ) : (
                 <div style={{marginLeft:"8vw"}}>
-                    <TVComponent />
+                    {/* <TVComponent /> */}
                 </div>
             )}
         </div>
