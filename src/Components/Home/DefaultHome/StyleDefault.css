@@ -1,143 +1,134 @@
+
+
+
+
+
+
+
+
+
+
+
 .post-form {
-    flex-direction: column;
-    align-items: center;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    padding: 20px;
-    border: 1px solid #ddd;
+    background: #fff;
+    border: 1px solid #dddfe2;
     border-radius: 8px;
-    background-color: #fff;
-    max-width: 600px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.post-form__textarea {
     width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-.Uplode_Image{
-    display: none;
-    margin-top: 1rem;
-    background-color: #D7DBDD;
-    margin-bottom: 10px;
-}
-.UploadButton {
-    margin-right: 15rem;
-    display: inline-block;
-    background-color: #2E4053 ;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border: none;
-    border-radius: 24px;
-    
-}
-.UploadButton:hover {
-    background-color: #45a049;
-}
-
-.post-form__button {
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.post-form__button:hover {
-    background-color: #0056b3;
-}
-.post-form__button_Post{
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 0.5rem;
-}
-
-.post-form__button_Jobs{
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #2dc346;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 0.5rem;
-}
-
-
-.post-list {
-    /* width: 80%; */
     max-width: 600px;
     /* margin: auto; */
-}
-
-.post {
-    background-color: #fff;
-    border: 1px solid #847f7f9a;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex-direction: column;
     align-items: center;
     margin-top: 1rem;
     margin-bottom: 2rem;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-    max-width: 600px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.post__image {
-    width: 250px;
-    height: auto;
-    margin-top: 10px;
-}
-.post-form-info{
+.post-form-info {
     display: flex;
+    align-items: center;
+    margin-bottom: 15px;
     padding: 1rem;
-
 }
-.displayImgPost{
+
+.imgInfoUserPost img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+
+.post-form-input-group {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    width: 100%;
+}
+
+.post-form__textarea, .post-form__input {
+    width: 100%;
+    border: 1px solid #ccd0d5;
+    border-radius: 16px;
+    padding: 12px 15px;
+    margin-bottom: 10px;    
+    font-size: 16px;
+    resize: none;
+}
+
+.image-preview {
+    margin-bottom: 10px;
+}
+
+.displayImgPost {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
     text-align: center;
     padding: 1rem;
-    border-radius: 6%;
     border: 2px solid #2eaff0;
 }
-.post-form-info .InfoUserPost{
-    margin-top: 0.8rem;
-    margin-left: 0.8rem;
+
+.Uplode_Image {
+    display: none;
 }
-.profilePictureHome{
-    width: 8rem;
-    height: 8rem;
-    border-radius: 50%;
-    border: 2px solid #2eaff0;
+
+.button-group {
+    margin-top: -30px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: center;
 }
-.TextAreaFiled {
-    padding: 0.5rem;
-    border: 0px;
-    overflow:hidden
+
+.UploadButton {
+    background-color: #f5f6f7;
+    color: #4b4f56;
+    border: 1px solid #ccd0d5;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+}
+
+.UploadButton:hover {
+    background-color: #ebedf0;
+}
+
+.UploadButtonLabel {
+    margin-left: 8px;
+    font-size: 16px;
+}
+
+.post-form__button_Post, .post-form__button_Jobs {
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease-in-out;
+    margin: 0.5rem;
+}
+
+.post-form__button_Post:hover, .post-form__button_Jobs:hover {
+    background-color: #165cdb;
 }
 
 .TextAreaFiled:focus {
     outline: none;
     /* Remove default focus outline */
 }
+
+.profilePictureHome {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    border: 2px solid #2eaff0;
+}
+
 .btnApplyJob {
     margin-top: 2rem;
     background-color: #3498DB;
@@ -163,4 +154,84 @@
 .btnApplyJob:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+}
+
+.post-list {
+    max-width: 600px;
+}
+
+.post {
+    background-color: #fff;
+    border: 1px solid #847f7f9a;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    max-width: 600px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.post__image {
+    width: 250px;
+    height: auto;
+    margin-top: 0px;
+}
+
+
+
+
+
+
+
+
+
+.reactions {
+    position: relative;
+    display: inline-block;
+}
+
+.reaction-button {
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 16px;
+}
+
+.reaction-options {
+    display: none;
+    position: absolute;
+    top: -20px;
+    left: -83px;
+    z-index: 10;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.reaction-button:hover .reaction-options,
+.reaction-options:hover {
+    display: flex;
+}
+
+.reaction-options button {
+    display: inline-block;
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 20px;
+}
+
+.reaction-options button:hover {
+    background: #f0f0f0;
 }

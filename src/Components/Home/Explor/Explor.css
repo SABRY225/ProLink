@@ -1,3 +1,246 @@
+.no-result-container {
+  text-align: center;
+  padding: 50px;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 600px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.no-result-icon {
+  font-size: 50px;
+  color: #3498DB;
+  margin-bottom: 20px;
+}
+
+.no-result-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.no-result-message {
+  font-size: 16px;
+  color: #666;
+}
+
+.post-image {
+  width: 85%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+.instagram-card {
+  background: #ffffff;
+  border: 1px solid #f2f2f2;
+  border-radius: 3px;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.instagram-card-header {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.instagram-card-user-image {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+.instagram-card-link{
+  color: #262626;
+font-size: 1.3rem;
+}
+.instagram-card-user-name {
+  /* margin-left: 0px; */
+  
+  font-weight: bold;
+  color: #262626;
+}
+
+.instagram-card-job-title {
+  /* margin-left: 20px; */
+  font-size: 0.8rem;
+  color: #888;
+  font-style: italic;
+}
+
+.instagram-card-content {
+  padding:0 20px;
+}
+
+.instagram-card-content p {
+  font-size: 16px;
+  color: #262626;
+}
+
+.instagram-card-content-job-title {
+  font-weight: bold;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+  text-align: start;
+}
+
+
+
+.btnApplyJob {
+  margin-top: 2rem;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btnApplyJob:active {
+  transform: scale(1);
+}
+
+.btnApplyJob:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+}
+
+.btnApplyJob.apply {
+  background-color: #3498db;
+}
+
+.btnApplyJob.apply:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+.btnApplyJob.cancel {
+  background-color: #e74c3c;
+}
+
+.btnApplyJob.cancel:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
+}
+
+
+
+.user-card-link {
+  text-decoration: none;
+  color: black;
+  width: 100%;
+  max-width: 500px;
+}
+
+
+.user-card-jobtitle{
+font-size: x-small;
+}
+
+.user-card {
+  font-size: small;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  text-align: start;
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+}
+
+.user-card-info {
+  flex: 1;
+  line-height: 0.6;
+
+}
+
+.user-card-info h5 {
+  margin-bottom: 5px;
+}
+
+.user-card-info p {
+  margin: 0;
+}
+
+.user-card-stats {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.user-card-stats span {
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+/* Responsive Design */
+@media (max-width: 576px) {
+  .user-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .user-card-info {
+    margin-top: 10px;
+  }
+
+  .user-card-stats {
+    justify-content: center;
+  }
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
+.footer-action-icons {
+  font-size: 16px;
+  color: #ccc;
+}
+
+.comments-input {
+  border: none;
+  margin-left: 10px;
+  width: 100%;
+}
+
+.btnApplyJob {
+  background-color: #3498DB;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btnApplyJob:hover {
+  background-color: #2980B9;
+}
+
+
+
 .searchbar {
     margin-left: 20vw;
   }
@@ -54,3 +297,100 @@
       margin-left: -40vw;
     }
   }
+
+
+  .explor-post {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 20px;
+    padding: 15px;
+    max-width: 600px;
+  }
+  
+  .post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .avatar {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .post-header h4 {
+    margin: 0;
+  }
+  
+  .post-header span {
+    color: gray;
+    font-size: 0.8em;
+  }
+  
+  .post-content {
+    margin-bottom: 10px;
+  }
+  
+  .post-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  
+  .post-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .post-actions button {
+    background: #1877f2;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .post-comments {
+    margin-top: 20px;
+  }
+  
+  .comment {
+    border-bottom: 1px solid #ddd;
+    padding: 5px 0;
+  }
+  
+  .comment-form {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .comment-form input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+  }
+  
+  .comment-form button {
+    background: #1877f2;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  
+
+
+
+
+  
+  
