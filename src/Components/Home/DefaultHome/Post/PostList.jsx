@@ -23,6 +23,7 @@ const reactionEmojis = {
 };
 
 function PostList() {
+  const iduser=useSelector((state) => state.profile.id)
   const [posts, setPosts] = useState([]);
   const [com, setCom] = useState(false);
   const token = useSelector((state) => state.auth.token);
