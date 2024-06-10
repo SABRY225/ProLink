@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const PostList = () => {
+const JobList = () => {
     const [data, setData] = useState([]);
     const tok = useSelector((state) => state.auth.token);
     const UID = useSelector((state) => state.profile.id);
@@ -109,4 +109,4 @@ const PostList = () => {
     );
 };
 
-export default PostList;
+export default JobList;

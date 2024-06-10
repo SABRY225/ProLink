@@ -1,3 +1,14 @@
+
+
+
+
+
+
+
+
+
+
+
 .post-form {
     background: #fff;
     border: 1px solid #dddfe2;
@@ -171,4 +182,56 @@
     width: 250px;
     height: auto;
     margin-top: 0px;
+}
+
+
+
+
+
+
+
+
+
+.reactions {
+    position: relative;
+    display: inline-block;
+}
+
+.reaction-button {
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 16px;
+}
+
+.reaction-options {
+    display: none;
+    position: absolute;
+    top: -20px;
+    left: -83px;
+    z-index: 10;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.reaction-button:hover .reaction-options,
+.reaction-options:hover {
+    display: flex;
+}
+
+.reaction-options button {
+    display: inline-block;
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 20px;
+}
+
+.reaction-options button:hover {
+    background: #f0f0f0;
 }

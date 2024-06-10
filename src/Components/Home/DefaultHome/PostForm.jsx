@@ -6,7 +6,7 @@ import { storage } from '../../config/firebase';
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import axios from 'axios';
 
-const PostForm = () => {
+const PostForm = ({ setData }) => {
     const tok = useSelector((state) => state.auth.token);
     const [content, setContent] = useState('');
     const [jobTitle, setJobTitle] = useState('');
@@ -47,7 +47,7 @@ const PostForm = () => {
 
         try {
             const url = isJob ? `http://localhost:5292/api/Job` : `http://localhost:5292/api/Post`;
-            await axios.post(url, postData, {
+            const response = await axios.post(url, postData, {
                 headers: {
                     'Authorization': 'Bearer ' + tok,
                     'Content-Type': 'application/json'
@@ -59,6 +59,10 @@ const PostForm = () => {
             setImage(false);
             setJobTitle('');
             setIsJobPost(false);
+
+            // Update the list of jobs with the new job
+            setData(prevData => [response.data, ...prevData]);
+
         } catch (err) {
             console.error(err);
         }

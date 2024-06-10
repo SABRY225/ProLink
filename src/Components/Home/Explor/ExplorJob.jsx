@@ -29,7 +29,6 @@ function ExplorJob({ post }) {
 
     const handleCancelJobRequest = async (requestId) => {
         try {
-            console.log("Request ID for cancellation: ", requestId); // Debugging line
             await axios.delete(`http://localhost:5292/api/JobReques/delete-jobRequest?jobId=${requestId}`, {
                 headers: {
                     'Authorization': 'Bearer ' + tok,
