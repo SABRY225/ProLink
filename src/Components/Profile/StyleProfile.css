@@ -42,6 +42,7 @@
 /* Row containing the main content and sidebar */
 .profile-content {
     margin-top: 20px;
+    height: auth;
 }
 
 /* Sidebar styling */

@@ -1,11 +1,17 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 
-const UserInfo=({firstName,lastName,backImage,profilePicture,followersCount,jobTitle})=> {
+const UserInfo=({firstName,lastName,backImage,profilePicture,followersCount,jobTitle,isFollowed,isFriend})=> {
     console.log(jobTitle);
     const jopTitle = useSelector((state) => state.profile.jopTitle);
     const Name = firstName+" "+lastName;
     console.log(followersCount);
+    const handelFollow=()=>{
+
+    }
+    const handelUnFollow=()=>{
+        
+    }
   return (
         <>
         <div className="row">
@@ -27,8 +33,16 @@ const UserInfo=({firstName,lastName,backImage,profilePicture,followersCount,jobT
             <div className="col-md-12 p-2">
             <h4 style={{color:"#566573"}}><hr/></h4>
             </div>
+            <div className="col-md-12">
+            {isFollowed ? <>
+            <button onClick={handelFollow}>Follow</button>
+            </>:<>
+            <button nClick={handelUnFollow}>UnFollow</button>
+            </>}
+            </div>
 
         </div>
+
         </>
 )
 }

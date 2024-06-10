@@ -29,6 +29,7 @@ export default function Profile() {
               }
           });
           setData(response.data);
+          console.log(response.data);
           setFriends(Friends.data)
           console.log(Friends.data);
       } catch (error) {
@@ -53,7 +54,9 @@ export default function Profile() {
         backImage={data.backImage} 
         profilePicture={data.profilePicture} 
         followersCount={data.followersCount} 
-        jobTitle={data.jopTitle} 
+        jobTitle={data.jopTitle}
+        isFollowed={data.isFollowed}
+        isFriend={data.isFriend}
       />
       <div className="row profile-content">
         <div className="col-md-4 profile-sidebar">

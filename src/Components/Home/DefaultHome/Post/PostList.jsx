@@ -3,6 +3,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Modal from "react-modal";
 
 const ReactType = {
   LIKE: 0,
@@ -22,25 +23,29 @@ const reactionEmojis = {
   [ReactType.ANGRY]: "😡",
 };
 
+Modal.setAppElement("#root");
+
 function PostList() {
-  const iduser=useSelector((state) => state.profile.id)
+  const iduser = useSelector((state) => state.profile.id);
   const [posts, setPosts] = useState([]);
   const [com, setCom] = useState(false);
   const token = useSelector((state) => state.auth.token);
   const [comments, setComments] = useState({});
   const [followedUsers, setFollowedUsers] = useState([]);
+  const [openOptionsPostId, setOpenOptionsPostId] = useState(null);
+  const [editModalIsOpen, setEditModalIsOpen] = useState(false);
+  const [editPostId, setEditPostId] = useState(null);
+  const [editDescription, setEditDescription] = useState("");
+  const [editImage, setEditImage] = useState("");
 
   const getPosts = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:5292/api/Post/get-all",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.get("http://localhost:5292/api/Post/get-all", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
       setPosts(response.data);
     } catch (error) {
       toast.error("Failed to fetch posts");
@@ -183,6 +188,57 @@ function PostList() {
     });
   };
 
+  const openEditModal = (post) => {
+    setEditPostId(post.id);
+    setEditDescription(post.description);
+    setEditImage(post.postImage);
+    setEditModalIsOpen(true);
+  };
+
+  const handleEditPost = async () => {
+    try {
+      await axios.put(
+        `http://localhost:5292/api/Post?id=${editPostId}`,
+        { description: editDescription, postImage: editImage },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      toast.success("Post updated successfully");
+      setEditModalIsOpen(false);
+      getPosts();
+    } catch (error) {
+      toast.error("Failed to update post");
+      console.error(error);
+    }
+  };
+
+  const handleDeletePost = async (postId) => {
+    try {
+      await axios.delete(
+        `http://localhost:5292/api/Post?id=${postId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      toast.success("Post deleted successfully");
+      getPosts();
+    } catch (error) {
+      toast.error("Failed to delete post");
+      console.error(error);
+    }
+  };
+
+  const toggleOptions = (postId) => {
+    setOpenOptionsPostId((prev) => (prev === postId ? null : postId));
+  };
+
   useEffect(() => {
     getPosts();
   }, []);
@@ -217,12 +273,37 @@ function PostList() {
                       color: "#5DADE2",
                     }}
                   >
-                    Software Engineer{/* {post.user.jobTitle} */}
+                    {post.user.jopTitle}
                   </div>
                 </div>
-                <div>
-                  {/* Follow button */}
-                  {!followedUsers.includes(post.user.id) && (
+                <div className="post-options">
+                  {iduser === post.user.id && (
+                    <>
+                      <button
+                        className="options-button"
+                        onClick={() => toggleOptions(post.id)}
+                      >
+                        ⋮
+                      </button>
+                      {openOptionsPostId === post.id && (
+                        <div className="options-menu">
+                          <button
+                            className="edit-post"
+                            onClick={() => openEditModal(post)}
+                          >
+                            Edit
+                          </button>
+                          <button
+                            className="delete-post"
+                            onClick={() => handleDeletePost(post.id)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      )}
+                    </>
+                  )}
+                  {!post.isUserFollowed && iduser !== post.user.id && (
                     <button
                       className="btn"
                       style={{ color: "#5DADE2" }}
@@ -407,27 +488,6 @@ function PostList() {
                       Add Comment
                     </button>
                   </div>
-                  {/* <div className="reactions">
-                                    {!post.isLiked ? (
-                                        <div className="reaction-button">
-                                            <button className="reaction-button">
-                                                👍
-                                            </button>
-                                            <div className="reaction-options">
-                                                <button onClick={() => handleAddReact(post.id, ReactType.LIKE)}>👍</button>
-                                                <button onClick={() => handleAddReact(post.id, ReactType.LOVE)}>❤️</button>
-                                                <button onClick={() => handleAddReact(post.id, ReactType.HAHA)}>😂</button>
-                                                <button onClick={() => handleAddReact(post.id, ReactType.WOW)}>😮</button>
-                                                <button onClick={() => handleAddReact(post.id, ReactType.DISLIKE)}>😢</button>
-                                                <button onClick={() => handleAddReact(post.id, ReactType.ANGRY)}>😡</button>
-                                            </div>
-                                        </div>
-                                    ) : (
-                                        <button className="reaction-button" onClick={() => handleDeleteReact(post.likeId)}>
-                                            {reactionEmojis[post.react.type]}
-                                        </button>
-                                    )}
-                                </div> */}
                 </div>
               )}
             </div>
@@ -435,6 +495,51 @@ function PostList() {
         </div>
       ))}
       <ToastContainer />
+      <Modal
+        isOpen={editModalIsOpen}
+        onRequestClose={() => setEditModalIsOpen(false)}
+        contentLabel="Edit Post"
+      >
+        <h2>Edit Post</h2>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleEditPost();
+          }}
+        >
+          <div className="form-group">
+            <label htmlFor="editDescription">Description</label>
+            <textarea
+              id="editDescription"
+              className="form-control"
+              value={editDescription}
+              onChange={(e) => setEditDescription(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="editImage">Image URL</label>
+            <input
+              type="text"
+              id="editImage"
+              className="form-control"
+              value={editImage}
+              onChange={(e) => setEditImage(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Save Changes
+          </button>
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={() => setEditModalIsOpen(false)}
+          >
+            Cancel
+          </button>
+        </form>
+      </Modal>
     </div>
   );
 }
