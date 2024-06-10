@@ -67,7 +67,6 @@ const PostForm = ({ setData }) => {
             console.error(err);
         }
     };
-
     return (
         <form className="post-form" onSubmit={(e) => handleSubmit(e, isJobPost)}>
             <div className="post-form-info">
