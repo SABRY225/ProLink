@@ -135,7 +135,7 @@ console.log(data);
                                                 <p>Home</p>
                                                 <span><img src={lessThen} alt="lessThen" /></span>
                                             </Link>
-                                            <Link to='/profile' className='sub-menu-link' >
+                                            <Link to={`/profile/${data.id}`} className='sub-menu-link' >
                                                 <img src={Profile} alt="Profile" />
                                                 <p>Profile</p>
                                                 <span><img src={lessThen} alt="lessThen" /></span>

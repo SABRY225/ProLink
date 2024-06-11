@@ -44,8 +44,9 @@ const routers = createBrowserRouter([
           { path: "Jobs", element: <JobPages /> }
         ]},
         {
-          path: "profile", element: <Profile />
+          path: "profile/:id", element: <Profile />
         },
+        {path: "profileAccount/:id", element: <Profile />},
         { path: "ProfileUser", element: <Profile/>},
         {path:"setting",element:<Setting />,children:[
           {path:"UserImage",element:<UserImage />},

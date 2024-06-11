@@ -46,48 +46,32 @@ const FriendRequestCard = ({ request }) => {
     }
   };
 
- const handleDeclineFriendRequest = async () => {
-   console.log("FriendRequest ID:", id);
-   console.log("Auth Token:", token);
-   try {
-     const response = await axios.put(
-       `http://localhost:5292/api/FriendRequest/decline-friendRequest?friendId=1`,
-       {},
-       {
-         headers: {
-           Authorization: `Bearer ${token}`,
-         },
-       }
-     );
-     console.log("Friend request declined:", response.data);
-     // Optionally update state or refetch data to reflect changes
-   } catch (error) {
-     console.error(
-       "Error declining friend request:",
-       error.response?.data || error.message
-     );
-   }
- };
-
+  const handleDeclineFriendRequest = async () => {
+    try {
+      const response = await axios.put(
+        `http://localhost:5292/api/FriendRequest/decline-friendRequest?friendId=${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("Friend request declined:", response.data);
+      // Optionally update state or refetch data to reflect changes
+    } catch (error) {
+      console.error("Error declining friend request:", error.response?.data || error.message);
+    }
+  };
 
   return (
-    <div
-      className={`friend-request-card ${
-        status === 1 ? "accepted" : status === 2 ? "denied" : ""
-      }`}
-    >
+    <div className={`friend-request-card ${status === 1 ? "accepted" : status === 2 ? "denied" : ""}`}>
       <div className="card-content">
         <div className="comment-card">
-          <NavLink
-            to={`/profile/${sender?.id}`}
-            className="d-flex text-decoration-none text-black"
-          >
+          <NavLink to={`/profile/${sender?.id}`} className="d-flex text-decoration-none text-black">
             <div className="comment-header">
               <Image
-                src={
-                  sender?.profilePicture ||
-                  "https://bootdey.com/img/Content/avatar/avatar5.png"
-                }
+                src={sender?.profilePicture || "https://bootdey.com/img/Content/avatar/avatar5.png"}
                 roundedCircle
                 width={40}
                 height={40}
@@ -96,13 +80,9 @@ const FriendRequestCard = ({ request }) => {
               <div>
                 <h6 className="mb-0">
                   {sender?.firstName} {sender?.lastName}
-                  <small className="px-3">
-                    {calculateTimeDifference(dateSent)}
-                  </small>
+                  <small className="px-3">{calculateTimeDifference(dateSent)}</small>
                 </h6>
-                <small className="text-muted">
-                  {sender?.jobTitle || "No Job Title"}
-                </small>
+                <small className="text-muted">{sender?.jobTitle || "No Job Title"}</small>
               </div>
             </div>
           </NavLink>

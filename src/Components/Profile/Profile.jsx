@@ -9,14 +9,15 @@ export default function Profile() {
   const [data, setData] = useState({});
   const [friends, setFriends] = useState([]);
   const tok = useSelector((state) => state.auth.token);
-  const idOtherUser = useSelector((state) => state.profile.idOtherUser);
   const dispatch = useDispatch(); // Get the dispatch function
+  const { id } = useParams();
+  console.log('Route ID:', id);
   const getDataUser = async () => {
       try {
           const response = await axios.get(
             `http://localhost:5292/api/User/get-by-id`,
             {
-              params: { id: idOtherUser},
+              params: {id},
               headers: {
                 Authorization: "Bearer " + tok,
                 "Content-Type": "application/json",
@@ -42,7 +43,7 @@ export default function Profile() {
 
   useEffect(() => {
       getDataUser();
-  }, [tok]);
+  }, [tok,id]);
 
   const skills = data.skills || [];
   console.log("data", data);
@@ -57,6 +58,7 @@ export default function Profile() {
         jobTitle={data.jopTitle}
         isFollowed={data.isFollowed}
         isFriend={data.isFriend}
+        isFriendRequestSent={data.isFriendRequestSent}
       />
       <div className="row profile-content">
         <div className="col-md-4 profile-sidebar">
