@@ -58,6 +58,7 @@ export default function Profile() {
         jobTitle={data.jopTitle}
         isFollowed={data.isFollowed}
         isFriend={data.isFriend}
+        isFriendRequestSent={data.isFriendRequestSent}
       />
       <div className="row profile-content">
         <div className="col-md-4 profile-sidebar">

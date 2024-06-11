@@ -12,15 +12,13 @@ const UserInfo = ({
   jobTitle,
   isFollowed,
   isFriend,
+  isFriendRequestSent,
 }) => {
   const jobTitleFromState = useSelector((state) => state.profile.jobTitle);
   const Name = `${firstName} ${lastName}`;
   const { id } = useParams();
   const tok = useSelector((state) => state.auth.token);
-  console.log(id);
   const iduser = useSelector((state) => state.profile.id);
-  console.log(iduser);
-
 
   const handleFollow = () => {
     console.log("Follow button clicked");
@@ -30,33 +28,58 @@ const UserInfo = ({
     console.log("Unfollow button clicked");
   };
 
-  const handleAddFriend = async() => {
+  const handleAddFriend = async () => {
     console.log("Add Friend button clicked");
     try {
-      const res=await axios.post("http://localhost:5292/api/FriendRequest/send-friendRequest",{
-        params:{userId:id},
-        headers: {
+      const res = await axios.post(
+        "http://localhost:5292/api/FriendRequest/send-friendRequest",
+        {},
+        {
+          params: { userId: id },
+          headers: {
             'Authorization': 'Bearer ' + tok,
+          },
         }
-      })
-      alert(res)
+      );
+      alert('Friend request sent successfully');
     } catch (error) {
-      alert(error)
+      alert('Error sending friend request: ' + error.message);
     }
   };
 
-  const handleRemoveFriend = async() => {
-    console.log("Add Friend button clicked");
+  const handleRemoveFriend = async () => {
+    console.log("Remove Friend button clicked");
     try {
-      const res=await axios.delete("http://localhost:5292/api/FriendRequest/delete-friendRequest",{
-        params:{friendId:id},
-        headers: {
+      const res = await axios.delete(
+        "http://localhost:5292/api/FriendRequest/delete-friendRequest",
+        {
+          params: { friendId: id },
+          headers: {
             'Authorization': 'Bearer ' + tok,
+          },
         }
-      })
-      alert(res)
+      );
+      alert('Friend removed successfully');
     } catch (error) {
-      alert(error)
+      alert('Error removing friend: ' + error.message);
+    }
+  };
+
+  const handleCancelFriendRequest = async () => {
+    console.log("Cancel Friend Request button clicked");
+    try {
+      const res = await axios.delete(
+        "http://localhost:5292/api/FriendRequest/delete-friendRequest",
+        {
+          params: { friendId: id },
+          headers: {
+            'Authorization': 'Bearer ' + tok,
+          },
+        }
+      );
+      alert('Friend request cancelled successfully');
+    } catch (error) {
+      alert('Error cancelling friend request: ' + error.message);
     }
   };
 
@@ -95,21 +118,33 @@ const UserInfo = ({
           <h4 style={{ color: "#197BE3" }}>{followersCount} Followers</h4>
         </div>
         <div className="col-md-12">
-          {
-            id==iduser ?
-            " ":<>
-            {isFollowed ? (
-            <button style={buttonStyle2} onClick={handleUnfollow}>Unfollow</button>
-          ) : (
-            <button style={buttonStyle} onClick={handleFollow}>Follow</button>
+          {id !== iduser && (
+            <>
+              {isFollowed ? (
+                <button style={buttonStyle2} onClick={handleUnfollow}>
+                  Unfollow
+                </button>
+              ) : (
+                <button style={buttonStyle} onClick={handleFollow}>
+                  Follow
+                </button>
+              )}
+              {isFriend ? (
+                <button style={buttonStyle2} onClick={handleRemoveFriend}>
+                  Remove Friend
+                </button>
+              ) : isFriendRequestSent ? (
+                <button style={buttonStyle2} onClick={handleCancelFriendRequest}>
+                  Cancel Friend Request
+                </button>
+              ) : (
+                <button style={buttonStyle} onClick={handleAddFriend}>
+                  Add Friend
+                </button>
+              )}
+              <button style={buttonStyle}>Message</button>
+            </>
           )}
-          {isFriend ? (
-            <button style={buttonStyle2} onClick={handleRemoveFriend}>Remove Friend</button>
-          ) : (
-            <button style={buttonStyle} onClick={handleAddFriend}>Add Friend</button>
-          )}
-          <button style={buttonStyle}>Message</button></>
-          }
         </div>
         <div className="col-md-12 p-2">
           <h4 style={{ color: "#566573" }}>
@@ -133,16 +168,18 @@ const buttonStyle = {
   outline: 'none',
   transition: 'background-color 0.3s ease',
 };
+
 const buttonStyle2 = {
-    margin: '10px',
-    padding: '10px 20px',
-    fontSize: '16px',
-    cursor: 'pointer',
-    borderRadius: '5px',
-    border: '1px solid #E74C3C',
-    backgroundColor: '#E74C3C',
-    color: '#fff',
-    outline: 'none',
-    transition: 'background-color 0.3s ease',
-  };
+  margin: '10px',
+  padding: '10px 20px',
+  fontSize: '16px',
+  cursor: 'pointer',
+  borderRadius: '5px',
+  border: '1px solid #E74C3C',
+  backgroundColor: '#E74C3C',
+  color: '#fff',
+  outline: 'none',
+  transition: 'background-color 0.3s ease',
+};
+
 export default UserInfo;
