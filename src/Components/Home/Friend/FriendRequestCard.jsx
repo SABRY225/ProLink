@@ -40,7 +40,6 @@ const FriendRequestCard = ({ request }) => {
         }
       );
       console.log("Friend request accepted:", response.data);
-      // Optionally update state or refetch data to reflect changes
     } catch (error) {
       console.error("Error accepting friend request:", error);
     }

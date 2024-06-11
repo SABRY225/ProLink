@@ -51,9 +51,8 @@ const UserInfo = ({
     console.log("Remove Friend button clicked");
     try {
       const res = await axios.delete(
-        "http://localhost:5292/api/FriendRequest/delete-friendRequest",
+        `http://localhost:5292/api/Friend/delete?friendId=${id}`,
         {
-          params: { friendId: id },
           headers: {
             'Authorization': 'Bearer ' + tok,
           },
