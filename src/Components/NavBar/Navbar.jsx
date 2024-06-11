@@ -115,8 +115,8 @@ console.log(data);
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <div className="navbar-nav mx-auto"> {/* Centering the search bar */}
-                            <SearchBar />
+                        <div className="navbar-nav mx-auto"> 
+                            {/* <SearchBar /> */}
                         </div>
                         <div className="d-flex ml-auto"> {/* Align user info to the right */}
                             <div className='User'>

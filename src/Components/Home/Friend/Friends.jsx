@@ -48,7 +48,9 @@ function Friends() {
 
   return (
     <div>
-      <button onClick={acceptAllFriendRequests}>Accept All</button>
+      {/* <div className="d-flex ">
+      <button onClick={acceptAllFriendRequests} className="btn">Accept All</button>
+      </div> */}
       {friendRequests.map((request) => (
         <FriendRequestCard key={request.id} request={request} />
       ))}
