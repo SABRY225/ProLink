@@ -1,11 +1,11 @@
-.SlidBar{
+/* .SlidBar{
     margin-top:-0.9rem ;
     padding-top: 2rem;
     padding-left: 1rem;
     height: 94vh;
     background-color:#f2f2f2;
-}
-
+} */
+/*
 .sub-menu-link-2{
     display: flex;
     align-items: center;
@@ -46,6 +46,7 @@
     width: 100%;
     transform: translateX(5px);
 }
+*/
 .InfoUserHome{
     margin-top: 1rem;
     margin-bottom: 2rem;

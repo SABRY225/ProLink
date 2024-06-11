@@ -9,7 +9,7 @@ function StatisticsCards({ users, posts, jobs }) {
   return (
     <Container className="grey-bg container d-flex flex-column align-items-center mt-0 overflow-hidden">
       <Row className="w-100 justify-content-start mb-4 mt-3 searchbar">
-        <Col xs={12} md={10} lg={8} xl={6}>
+        <Col>
           <SearchBar />
         </Col>
       </Row>

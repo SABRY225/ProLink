@@ -52,6 +52,7 @@ function PostList() {
       console.error(error);
     }
   };
+  console.log(posts);
 
   const comFun = () => {
     setCom(!com);
@@ -396,12 +397,15 @@ function PostList() {
                       </div>
                     </div>
                   ) : (
+                    <>
+                    <span style={{color:"#000"}}>{post.reactsCount}</span>
                     <button
                       className="reaction-button"
                       onClick={() => handleDeleteReact(post.likeId)}
                     >
                       {reactionEmojis[post.react.type]}
                     </button>
+                    </>
                   )}
                 </div>
                 <a
@@ -410,7 +414,7 @@ function PostList() {
                   onClick={() => comFun()}
                 >
                   <i className="far fa-comment-dots me-2" />
-                  <p className="mb-0">Comment</p>
+                  <p className="mb-0"><span style={{color:"#000"}}>{post.commentsCount}</span> Comment</p>
                 </a>
               </div>
 
